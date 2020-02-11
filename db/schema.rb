@@ -34,11 +34,12 @@ ActiveRecord::Schema.define(version: 2020_02_11_002528) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "name", default: "", null: false
     t.string "phone", default: "", null: false
-    t.date "dob"
+    t.date "date_of_birth"
     t.string "address", default: "", null: false
     t.string "apt", default: "", null: false
     t.string "city", default: "", null: false
     t.string "postal_code", default: "", null: false
+    t.boolean "admin", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

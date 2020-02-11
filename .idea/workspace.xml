@@ -4,8 +4,10 @@
     <list default="true" id="2d4f6903-9505-42f4-b0a4-00bd9b8a51f9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/welcome/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/welcome/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/initializers/devise.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/initializers/devise.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20200211002528_add_columns_to_users.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20200211002528_add_columns_to_users.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -144,7 +146,7 @@
       <workItem from="1581211054418" duration="826000" />
       <workItem from="1581371039331" duration="176000" />
       <workItem from="1581371227238" duration="347000" />
-      <workItem from="1581371665730" duration="11076000" />
+      <workItem from="1581371665730" duration="14499000" />
     </task>
     <servers />
   </component>
@@ -176,5 +178,9 @@
     </state>
     <state width="1638" height="623" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1581211094726" />
     <state width="1807" height="278" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1581380931422" />
+    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1581384529607">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1581384529607" />
   </component>
 </project>
