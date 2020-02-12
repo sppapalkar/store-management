@@ -15,6 +15,28 @@
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
+  <div class="field">
+    <%= form.label :brand %>
+    <%= form.text_field :brand %>
+  </div>
+  <div>
+    <%= form.label :category_id %>
+    <%= collection_select( :item, :category_id, Category.all, :id, :name, {}, { multiple: false, include_blank: true }) %>
+  </div>
+  <div class="field">
+    <%= form.label :restricted_item %>
+    <%= form.check_box :restricted_item %>
+  </div>
+  <div class="field">
+    <%= form.label :age_restricted_item %>
+    <%= form.check_box :age_restricted_item %>
+  </div>
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity %>
+  </div>
+
+
 
   <div class="actions">
     <%= form.submit %>
