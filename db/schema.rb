@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_12_195123) do
+ActiveRecord::Schema.define(version: 2020_02_12_203733) do
+
+  create_table "cards", force: :cascade do |t|
+    t.string "name"
+    t.string "number"
+    t.string "cvv"
+    t.integer "expiry_mm"
+    t.integer "expiry_yy"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
