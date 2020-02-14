@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d4f6903-9505-42f4-b0a4-00bd9b8a51f9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.rakeTasks" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.rakeTasks" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/cards_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/cards_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/card.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/card.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/cards/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/cards/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/welcome/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/welcome/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,6 +19,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectId" id="1XY7DM8v4GHn7lxtDp2AWkkYIcp" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -151,7 +165,9 @@
       <workItem from="1581393833705" duration="94000" />
       <workItem from="1581431806532" duration="538000" />
       <workItem from="1581535656142" duration="1837000" />
-      <workItem from="1581539299045" duration="1195000" />
+      <workItem from="1581539299045" duration="4983000" />
+      <workItem from="1581647204188" duration="4691000" />
+      <workItem from="1581657006174" duration="2377000" />
     </task>
     <servers />
   </component>
@@ -159,33 +175,98 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state width="927" height="466" key="DebuggerActiveHint" timestamp="1581657256285">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="927" height="466" key="DebuggerActiveHint/67.27.1853.1053@67.27.1853.1053" timestamp="1581657256285" />
     <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1581371571934">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1581371571934" />
-    <state width="1807" height="278" key="GridCell.Tab.0.bottom" timestamp="1581539383944">
+    <state width="1807" height="278" key="GridCell.Tab.0.bottom" timestamp="1581660568647">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1638" height="623" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1581211094727" />
-    <state width="1807" height="278" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1581539383944" />
-    <state width="1807" height="278" key="GridCell.Tab.0.center" timestamp="1581539383943">
+    <state width="1807" height="278" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1581660568647" />
+    <state width="1807" height="278" key="GridCell.Tab.0.center" timestamp="1581660568645">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1638" height="623" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1581211094726" />
-    <state width="1807" height="278" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1581539383943" />
-    <state width="1807" height="278" key="GridCell.Tab.0.left" timestamp="1581539383943">
+    <state width="1807" height="278" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1581660568645" />
+    <state width="1807" height="278" key="GridCell.Tab.0.left" timestamp="1581660568644">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1638" height="623" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1581211094725" />
-    <state width="1807" height="278" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1581539383943" />
-    <state width="1807" height="278" key="GridCell.Tab.0.right" timestamp="1581539383943">
+    <state width="1807" height="278" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1581660568644" />
+    <state width="1807" height="278" key="GridCell.Tab.0.right" timestamp="1581660568646">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1638" height="623" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1581211094726" />
-    <state width="1807" height="278" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1581539383943" />
+    <state width="1807" height="278" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1581660568646" />
+    <state width="1807" height="278" key="GridCell.Tab.1.bottom" timestamp="1581660568650">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="278" key="GridCell.Tab.1.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1581660568650" />
+    <state width="1807" height="278" key="GridCell.Tab.1.center" timestamp="1581660568648">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="278" key="GridCell.Tab.1.center/67.27.1853.1053@67.27.1853.1053" timestamp="1581660568648" />
+    <state width="1807" height="278" key="GridCell.Tab.1.left" timestamp="1581660568648">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="278" key="GridCell.Tab.1.left/67.27.1853.1053@67.27.1853.1053" timestamp="1581660568648" />
+    <state width="1807" height="278" key="GridCell.Tab.1.right" timestamp="1581660568650">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="278" key="GridCell.Tab.1.right/67.27.1853.1053@67.27.1853.1053" timestamp="1581660568650" />
+    <state width="1807" height="528" key="GridCell.Tab.2.bottom" timestamp="1581658225512">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="528" key="GridCell.Tab.2.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1581658225512" />
+    <state width="1807" height="528" key="GridCell.Tab.2.center" timestamp="1581658225512">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="528" key="GridCell.Tab.2.center/67.27.1853.1053@67.27.1853.1053" timestamp="1581658225512" />
+    <state width="1807" height="528" key="GridCell.Tab.2.left" timestamp="1581658225512">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="528" key="GridCell.Tab.2.left/67.27.1853.1053@67.27.1853.1053" timestamp="1581658225512" />
+    <state width="1807" height="528" key="GridCell.Tab.2.right" timestamp="1581658225512">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="528" key="GridCell.Tab.2.right/67.27.1853.1053@67.27.1853.1053" timestamp="1581658225512" />
+    <state x="657" y="253" key="run.anything.popup" timestamp="1581650002917">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="657" y="253" key="run.anything.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1581650002917" />
     <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1581384529607">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="656" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1581384529607" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="ruby-line">
+          <url>file://$PROJECT_DIR$/app/controllers/cards_controller.rb</url>
+          <line>26</line>
+          <properties myBlockOrdinal="-1">
+            <option name="block-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="ruby-line">
+          <url>file://$PROJECT_DIR$/app/controllers/cards_controller.rb</url>
+          <line>6</line>
+          <properties myBlockOrdinal="-1">
+            <option name="block-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/store_management@Development__store_management.rcov" NAME="Development: store-management Coverage Results" MODIFIED="1581658225468" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="store-management" />
   </component>
 </project>

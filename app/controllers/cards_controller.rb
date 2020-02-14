@@ -4,7 +4,7 @@ class CardsController < ApplicationController
   # GET /cards
   # GET /cards.json
   def index
-    @cards = Card.all
+    @cards = Card.where(:user_id => current_user.id)
   end
 
   # GET /cards/1
@@ -25,6 +25,7 @@ class CardsController < ApplicationController
   # POST /cards.json
   def create
     @card = Card.new(card_params)
+    @card.user_id = current_user.id
 
     respond_to do |format|
       if @card.save

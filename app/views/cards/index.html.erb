@@ -2,33 +2,37 @@
 
 <h1>Cards</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Number</th>
-      <th>Cvv</th>
-      <th>Expiry mm</th>
-      <th>Expiry yy</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @cards.each do |card| %>
+<% if @cards.empty? %>
+  <p>No cards to display</p>
+<% else %>
+  <table>
+    <thead>
       <tr>
-        <td><%= card.name %></td>
-        <td><%= card.number %></td>
-        <td><%= card.cvv %></td>
-        <td><%= card.expiry_mm %></td>
-        <td><%= card.expiry_yy %></td>
-        <td><%= link_to 'Show', card %></td>
-        <td><%= link_to 'Edit', edit_card_path(card) %></td>
-        <td><%= link_to 'Destroy', card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Name</th>
+        <th>Number</th>
+        <th>Cvv</th>
+        <th>Expiry mm</th>
+        <th>Expiry yy</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+        <% @cards.each do |card| %>
+          <tr>
+            <td><%= card.name %></td>
+            <td><%= card.number %></td>
+            <td><%= card.cvv %></td>
+            <td><%= card.expiry_mm %></td>
+            <td><%= card.expiry_yy %></td>
+            <td><%= link_to 'Show', card %></td>
+            <td><%= link_to 'Edit', edit_card_path(card) %></td>
+            <td><%= link_to 'Destroy', card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+    </tbody>
+  </table>
+<% end %>
 
 <br>
 

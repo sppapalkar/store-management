@@ -1,6 +1,8 @@
 <h1>Store Management System</h1>
 
 <% if current_user %>
+  <%= link_to 'View Saved Cards', cards_path %> <br>
+  <%= link_to 'Edit Profile', edit_user_registration_path %> <br>
   <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %> <br>
   <% if current_user.admin %>
     <%= link_to 'Add new Items', new_item_path %> <br>
