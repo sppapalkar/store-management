@@ -4,6 +4,22 @@
   <strong>Name:</strong>
   <%= @item.name %>
 </p>
+<p>
+  <strong>Brand:</strong>
+  <%= @item.brand %>
+</p>
+  <strong>Category:</strong>
+  <%= @item.category_id %>
+<p>
+  <strong>Restricted Item:</strong>
+  <%= @item.restricted_item %>
+</p>
+  <strong>Age Restricted Item:</strong>
+  <%= @item.age_restricted_item %>
+<p>
+  <strong>Quantity:</strong>
+  <%= @item.quantity %>git
+</p>
 
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>
