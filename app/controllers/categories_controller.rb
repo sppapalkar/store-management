@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_action :check_admin, only: [:new, :show, :edit, :update, :destroy]
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   # GET /categories
@@ -62,6 +63,13 @@ class CategoriesController < ApplicationController
   end
 
   private
+  # Check if Admin has logged In
+    def check_admin
+      unless user_signed_in? and current_user.admin
+        redirect_to root_path, notice: 'You dont have the rights to access the page'
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_category
       @category = Category.find(params[:id])

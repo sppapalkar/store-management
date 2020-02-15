@@ -4,6 +4,21 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true%>
+  </div>
+
+  <div class="field">
+    <%= f.label :date_of_birth, 'Date of Birth' %><br />
+    <%= f.date_field :date_of_birth, autofocus: true, :readonly => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone, 'Phone Number' %><br />
+    <%= f.text_field :phone, autofocus: true %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, :readonly => true%>
   </div>
@@ -11,19 +26,42 @@
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
+  <% unless current_user.admin %>
+    <div class="field">
+      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+      <% if @minimum_password_length %>
+        <br />
+        <em><%= @minimum_password_length %> characters minimum</em>
+      <% end %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+  <% end %>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div id = 'address'>
+    <div class="field">
+      <%= f.label :address, 'Street Address' %><br />
+      <%= f.text_field :address, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :apt, 'Apt/Suite' %><br />
+      <%= f.text_field :apt, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :city %><br />
+      <%= f.text_field :city, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :postal_code %><br />
+      <%= f.text_field :postal_code, autofocus: true %>
+    </div>
   </div>
 
   <div class="field">
@@ -36,8 +74,9 @@
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<% unless current_user.admin %>
+  <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
+  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<% end %>
 <%= link_to "Back", :back %>
