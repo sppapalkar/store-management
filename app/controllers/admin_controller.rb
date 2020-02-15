@@ -4,4 +4,7 @@ class AdminController < ApplicationController
       redirect_to root_path, notice: 'You dont have the rights to access the page'
     end
   end
+  def users
+    @users = User.all
+  end
 end

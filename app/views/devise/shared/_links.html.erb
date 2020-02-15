@@ -1,5 +1,9 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Log in", new_session_path(resource_name) %><br />
+  <% if user_signed_in? %>
+    <%= link_to "All Users", admin_users_path(resource_name) %><br />
+  <% else %>
+    <%= link_to "Log in", new_session_path(resource_name) %><br />
+  <% end %>
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
