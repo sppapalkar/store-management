@@ -7,5 +7,6 @@ Rails.application.routes.draw do
 
   root to: 'welcome#index'
   get 'admin', to: 'admin#index'
+  get 'cart', to: 'carts#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

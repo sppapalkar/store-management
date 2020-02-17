@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<h1>My Cart</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Item</th>
+    <th colspan="3"></th>
+    <th>Quantity</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @items.each do |item| %>
+    <tr>
+      <td><%= item.items_id %></td>
+      <td><%=item.quantity %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
