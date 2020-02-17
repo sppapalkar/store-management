@@ -24,6 +24,10 @@
     <%= collection_select( :item, :category_id, Category.all, :id, :name, {}, { multiple: false, include_blank: true }) %>
   </div>
   <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price %>
+  </div>
+  <div class="field">
     <%= form.label :restricted_item %>
     <%= form.check_box :restricted_item %>
   </div>
@@ -34,6 +38,10 @@
   <div class="field">
     <%= form.label :quantity %>
     <%= form.number_field :quantity %>
+  </div>
+  <div class="field">
+    <%= form.label :popularity %>
+    <%= form.text_field :popularity %>
   </div>
 
 
