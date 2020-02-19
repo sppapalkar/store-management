@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Item Brand:</strong>
+  <%= @item.brand %>
+</p>
+
+<p>
+  <strong>Item Name:</strong>
+  <%= @item.name %>
+</p>
+
+<p>
+  <strong>Item Price:</strong>
+  <%= @item.price %>
+</p>
+
+<p>
+  <strong>Available quantity:</strong>
+  <%= @item.quantity %>
+</p>
+
+<%= render 'form', cart: @cart_item %>
+
