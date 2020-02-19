@@ -8,7 +8,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def after_sign_up_path_for(resource)
     if user_signed_in? and current_user.admin
-      return admin_users_path
+      return users_path
     else
       return new_user_session_path
     end

@@ -1,5 +1,8 @@
 class AddForeignKeyToCards < ActiveRecord::Migration[6.0]
-  def change
+  def self.up
     add_reference :cards, :user, index: true, foreign_key: true
+  end
+  def self.down
+    remove_reference :cards, :user, index: true, foreign_key: true
   end
 end
