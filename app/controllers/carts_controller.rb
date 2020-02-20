@@ -4,9 +4,6 @@ class CartsController < ApplicationController
     @cart_items = Cart.where(:user_id => current_user.id)
   end
   def add
-    # @new_item = Cart.new(cart_params)
-    # @new_item.user_id = current_user.id
-    # @new_item.quantity = 1
     @cart_item = Cart.where(user_id: current_user.id, item_id: cart_params[:item_id]).first
     if @cart_item.nil?
       @new_item = Cart.new(cart_params)
@@ -32,9 +29,12 @@ class CartsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @cart_item.update(cart_update_params)
+      if not quantity_valid?
+        format.html { redirect_to cart_path, notice: 'Item quantity exceeds available quantity.' }
+        format.json { render :index, status: :ok, location: @cart_item }
+      elsif @cart_item.update(cart_update_params)
         format.html { redirect_to cart_path, notice: 'Item quantity updated.' }
-        format.json { render :show, status: :ok, location: @cart_item }
+        format.json { render :index, status: :ok, location: @cart_item }
       else
         format.html { render :edit }
         format.json { render json: @cart_item.errors, status: :unprocessable_entity }
@@ -51,16 +51,23 @@ class CartsController < ApplicationController
   end
 
   private
-    def cart_params
-      params.require(:item).permit(:item_id)
+  def quantity_valid?
+    if cart_update_params[:quantity].to_i > @item.quantity
+      return false
     end
+    return true
+  end
+  
+  def cart_params
+    params.require(:item).permit(:item_id)
+  end
 
   def cart_update_params
     params.require(:cart).permit(:quantity)
   end
     # Use callbacks to share common setup or constraints between actions.
-    def set_item
-      @cart_item = Cart.find(params[:id])
-      @item = Item.find(@cart_item.item_id)
-    end
+  def set_item
+    @cart_item = Cart.find(params[:id])
+    @item = Item.find(@cart_item.item_id)
+  end
 end
