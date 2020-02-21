@@ -1,0 +1,49 @@
+<h1>Order Confirmation</h1>
+
+<h3>Order Details:</h3>
+<%= render 'head' %>
+<br>
+
+<h3>Item Details:</h3>
+<table>
+  <thead>
+  <tr>
+    <th>Item Name</th>
+    <th>Item Brand</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Total Price</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @order_items.each do |order_item| %>
+    <% item = Item.find(order_item[:id]) %>
+    <tr>
+      <td><%= item.brand %></td>
+      <td><%= item.name %></td>
+      <td><%= item.price %></td>
+      <td><%= order_item[:quantity] %></td>
+      <td><%= item.price * order_item[:quantity] %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<p>
+  <strong>Sub Total:</strong>
+  <%= @sub_total %> <br>
+  <strong>Tax:</strong>
+  <%= @tax_total %> <br>
+  <strong>Final Amount:</strong>
+  <%= @final_total %> <br>
+</p>
+<br>
+
+<h3>Payment Details:</h3>
+<p>
+  Paid using credit card: <%= @card.number %>
+</p>
+<br>
+
+<%= link_to 'All Items', items_path %>

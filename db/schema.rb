@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_19_161139) do
+ActiveRecord::Schema.define(version: 2020_02_20_185514) do
 
   create_table "cards", force: :cascade do |t|
     t.string "name"
@@ -53,6 +53,28 @@ ActiveRecord::Schema.define(version: 2020_02_19_161139) do
     t.index ["category_id"], name: "index_items_on_category_id"
   end
 
+  create_table "orderitems", force: :cascade do |t|
+    t.integer "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "order_id"
+    t.integer "item_id"
+    t.index ["item_id"], name: "index_orderitems_on_item_id"
+    t.index ["order_id"], name: "index_orderitems_on_order_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.decimal "amount"
+    t.decimal "discount"
+    t.decimal "tax"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.integer "card_id"
+    t.index ["card_id"], name: "index_orders_on_card_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -77,4 +99,8 @@ ActiveRecord::Schema.define(version: 2020_02_19_161139) do
   add_foreign_key "carts", "items"
   add_foreign_key "carts", "users"
   add_foreign_key "items", "categories"
+  add_foreign_key "orderitems", "items"
+  add_foreign_key "orderitems", "orders"
+  add_foreign_key "orders", "cards"
+  add_foreign_key "orders", "users"
 end

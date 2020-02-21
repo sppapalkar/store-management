@@ -1,0 +1,59 @@
+<h1>Review Order</h1>
+
+<h3>Order Details:</h3>
+<p>
+  <strong>Date: </strong><%= Time.now.strftime("%m/%d/%Y") %>
+</p>
+<p>
+  <strong>Delivery Address:</strong> <br>
+  <%= current_user.name%> <br>
+  <%= current_user.address + "," %> <br>
+  <%= current_user.apt + "," %> <br>
+  <%= current_user.city  + " - " + @current_user.postal_code%> <br>
+</p>
+<p>
+  <strong>Contact:</strong>
+  <%= current_user.phone%>
+</p>
+<br>
+
+<h3>Item Details:</h3>
+<table>
+  <thead>
+  <tr>
+    <th>Item Name</th>
+    <th>Item Brand</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Total Price</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @cart_items.each do |cart_item| %>
+    <% item = Item.find(cart_item[:id]) %>
+    <tr>
+      <td><%= item.brand %></td>
+      <td><%= item.name %></td>
+      <td><%= item.price %></td>
+      <td><%= cart_item[:quantity] %></td>
+      <td><%= item.price * cart_item[:quantity] %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<p>
+  <strong>Sub Total:</strong>
+  <%= @sub_total %> <br>
+  <strong>Tax:</strong>
+  <%= @tax_total %> <br>
+  <strong>Final Amount:</strong>
+  <%= @final_total %> <br>
+</p>
+<br>
+
+<h3>Payment Details:</h3>
+<%= render 'payment', card:@card %>
+<br>
+

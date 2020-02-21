@@ -8,10 +8,17 @@
     <%= f.text_field :name, autofocus: true%>
   </div>
 
-  <div class="field">
-    <%= f.label :date_of_birth, 'Date of Birth' %><br />
-    <%= f.date_field :date_of_birth, autofocus: true, :readonly => true %>
-  </div>
+  <% if current_user.admin %>
+    <div class="field">
+      <%= f.label :date_of_birth, 'Date of Birth' %><br />
+      <%= f.date_field :date_of_birth, autofocus: true%>
+    </div>
+  <% else %>
+    <div class="field">
+      <%= f.label :date_of_birth, 'Date of Birth' %><br />
+      <%= f.date_field :date_of_birth, autofocus: true, :readonly => true %>
+    </div>
+  <% end %>
 
   <div class="field">
     <%= f.label :phone, 'Phone Number' %><br />

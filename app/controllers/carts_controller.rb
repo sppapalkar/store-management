@@ -1,10 +1,11 @@
 class CartsController < ApplicationController
-  before_action :set_item, only: [:edit, :update, :destroy]
+  # before_action :set_item, only: [:add, :edit]
+  # before_action :set_cart, only: [:update, :destroy]
+  before_action :set_cart_item, except: [:index]
   def index
     @cart_items = Cart.where(:user_id => current_user.id)
   end
   def add
-    @cart_item = Cart.where(user_id: current_user.id, item_id: cart_params[:item_id]).first
     if @cart_item.nil?
       @new_item = Cart.new(cart_params)
       @new_item.user_id = current_user.id
@@ -52,14 +53,15 @@ class CartsController < ApplicationController
 
   private
   def quantity_valid?
-    if cart_update_params[:quantity].to_i > @item.quantity
+    temp = cart_update_params
+    if temp["quantity"].to_i > @item.quantity
       return false
     end
     return true
   end
   
   def cart_params
-    params.require(:item).permit(:item_id)
+    params.permit(:item_id, :id)
   end
 
   def cart_update_params
@@ -67,7 +69,17 @@ class CartsController < ApplicationController
   end
     # Use callbacks to share common setup or constraints between actions.
   def set_item
-    @cart_item = Cart.find(params[:id])
-    @item = Item.find(@cart_item.item_id)
+    unless @cart_item.nil?
+      @item = Item.find(@cart_item.item_id)
+    end
   end
+  def set_cart_item
+    if cart_params.key?(:item_id)
+      @cart_item = Cart.where(user_id: current_user.id, item_id: cart_params[:item_id]).first
+    else
+      @cart_item = Cart.find(cart_params[:id])
+    end
+    set_item
+  end
+
 end

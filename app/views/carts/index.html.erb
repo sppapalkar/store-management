@@ -5,29 +5,36 @@
 <table>
   <thead>
   <tr>
-    <th>Item Name</th>
     <th>Item Brand</th>
+    <th>Item Name</th>
     <th>Price</th>
     <th>Quantity</th>
     <th>Total Price</th>
   </tr>
   </thead>
-
   <tbody>
   <% @cart_items.each do |cart_item| %>
     <% item = Item.find(cart_item.item_id) %>
     <tr>
-      <td><%= item.name %></td>
       <td><%= item.brand %></td>
+      <td><%= item.name %></td>
       <td><%= item.price %></td>
       <td><%= cart_item.quantity %></td>
       <td><%= item.price * cart_item.quantity %></td>
-      <td><%= link_to 'Change Quantity', edit_cart_path(cart_item) %></td>
+      <td><%= link_to 'Change Quantity', edit_cart_path(item) %></td>
       <td><%= link_to 'Remove From Cart', cart_path(:id => cart_item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
   </tbody>
 </table>
+<% items = Array.new
+  @cart_items.each do |cart_item|
+    temp = Hash.new
+    temp[:id] = cart_item.id
+    temp[:qty] = cart_item.quantity
+    items.append(temp)
+  end %>
 
+<%= link_to 'Checkout Cart', order_review_path('cart': 1), method: :get %> <br>
 <%= link_to 'All Items', items_path %>
 

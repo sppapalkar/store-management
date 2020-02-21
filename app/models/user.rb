@@ -7,4 +7,5 @@ class User < ApplicationRecord
   validates :name, :date_of_birth, :phone, :email, :encrypted_password, :address,
             :apt, :city, :postal_code, presence: true
   has_many :cards
+  has_many :orders
 end

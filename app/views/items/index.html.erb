@@ -30,7 +30,7 @@
           <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% else %>
           <% if item.quantity > 0 %>
-            <td><%= link_to 'Add to Cart', cart_path(:item => {:item_id => item}), method: :post %></td>
+            <td><%= link_to 'Add to Cart', cart_path(:item_id => item), method: :post %></td>
           <% else  %>
             <td>Item Unavailable - Subscribe</td>
           <%end %>
