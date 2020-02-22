@@ -1,5 +1,6 @@
 class AddColumnsToOrders < ActiveRecord::Migration[6.0]
   def self.up
+    add_column :orders, :status, :string, null: false, default: 'Complete'
     add_column :orders, :phone, :string, null: false, default: ''
     add_column :orders, :address, :string, null: false, default: ''
     add_column :orders, :apt, :string, null: false, default: ''
@@ -9,6 +10,7 @@ class AddColumnsToOrders < ActiveRecord::Migration[6.0]
     add_column :orders, :card_number, :string, null: false, default: ''
   end
   def self.down
+    remove_column :orders, :status
     remove_column :orders, :phone
     remove_column :orders, :address
     remove_column :orders, :apt

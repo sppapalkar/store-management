@@ -6,9 +6,9 @@
   <%= current_user.name%> <br>
   <%= @order.address + "," %> <br>
   <%= @order.apt + "," %> <br>
-  <%= @order.city  + " - " + @order.postal_code%> <br>
+  <%= @order.city  + "Zipcode: " + @order.postal_code%> <br>
 </p>
 <p>
   <strong>Contact:</strong>
-  <%= @order.phone%>
+  <%= @order.phone %>
 </p>

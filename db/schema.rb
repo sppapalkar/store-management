@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_22_165921) do
+ActiveRecord::Schema.define(version: 2020_02_22_203548) do
 
   create_table "cards", force: :cascade do |t|
     t.string "name"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2020_02_22_165921) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "order_id"
     t.integer "item_id"
+    t.string "status", default: "Complete", null: false
     t.index ["item_id"], name: "index_orderitems_on_item_id"
     t.index ["order_id"], name: "index_orderitems_on_order_id"
   end
@@ -70,6 +71,7 @@ ActiveRecord::Schema.define(version: 2020_02_22_165921) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.string "status", default: "Complete", null: false
     t.string "phone", default: "", null: false
     t.string "address", default: "", null: false
     t.string "apt", default: "", null: false

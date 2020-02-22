@@ -1,6 +1,10 @@
 class OrdersController < ApplicationController
   before_action :set_session, only: [:review]
-  before_action :get_cart_items, :check_cart, :check_cards, :compute_totals
+  before_action :get_cart_items, :check_cart, :check_cards, :compute_totals, except: [:index]
+
+  def index
+    @orders = Order.where(user_id: current_user.id)
+  end
 
   def review
     @card = Card.new
@@ -80,7 +84,8 @@ class OrdersController < ApplicationController
   # Save order items
   def create_order_items
     @cart_items.each do |cart_item|
-      order_item = Orderitem.new({:order_id => @order.id, :item_id => cart_item.item_id, :quantity => cart_item.quantity})
+      order_item = Orderitem.new(:order_id => @order.id, :item_id => cart_item.item_id,
+                                  :quantity => cart_item.quantity, :status => 'Complete')
       @order_items.append(order_item)
     end
     Orderitem.transaction do
@@ -93,6 +98,7 @@ class OrdersController < ApplicationController
   end
   # Assign attributes to order
   def assign_order_attributes
+    @order.status = 'Complete'
     # User Details
     @order.user_id = current_user.id
     @order.phone = current_user.phone
