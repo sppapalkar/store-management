@@ -1,0 +1,8 @@
+<p>
+  <strong>Sub Total:</strong>
+  <%= @order.amount + @order.discount - @order.tax %> <br>
+  <strong>Tax:</strong>
+  <%= @order.tax %> <br>
+  <strong>Final Amount:</strong>
+  <%= @order.amount %> <br>
+</p>

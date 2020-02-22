@@ -1,9 +1,20 @@
 class OrdersController < ApplicationController
   before_action :set_session, only: [:review]
-  before_action :get_cart_items, :check_cart, :check_cards, :compute_totals, except: [:index]
+  before_action :get_cart_items, :check_cart, :check_cards, :compute_totals, only: [:review, :create]
 
   def index
-    @orders = Order.where(user_id: current_user.id)
+    if current_user.admin?
+      @Item = Item.new
+      @User = User.new
+      @orders = Order.all
+    else
+      @orders = Order.where(user_id: current_user.id)
+    end
+  end
+
+  def manage
+    @order = Order.find(order_params[:id])
+    @order_items = Orderitem.where(order_id: @order.id)
   end
 
   def review
@@ -32,6 +43,10 @@ class OrdersController < ApplicationController
   # Whitelist Card params
   def card_params
     params.require(:card).permit(:id)
+  end
+  # Whitelist Order params
+  def order_params
+    params.permit(:id)
   end
   # Fetch list of items for order
   def get_cart_items

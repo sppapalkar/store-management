@@ -2,33 +2,42 @@
 
 <h1>Past Orders</h1>
 
+<% if current_user.admin %>
+  <%#= render 'search' %>
+<% end %>
+
 <table>
   <thead>
   <tr>
     <th>ID</th>
+    <% if current_user.admin %>
+      <th>User Email</th>
+    <% end %>
     <th>Date</th>
     <th>Tax</th>
     <th>Discount</th>
     <th>Amount</th>
     <th>Status</th>
   </tr>
-
   </thead>
 
   <tbody>
   <% @orders.each do |order| %>
     <tr>
       <td><%= order.id %></td>
+      <% if current_user.admin %>
+        <td><%= order.user.email %></td>
+      <% end %>
       <td><%= order.created_at.strftime("%m/%d/%Y") %></td>
       <td><%= order.tax %></td>
       <td><%= order.discount %></td>
       <td><%= order.amount %></td>
       <td><%= order.status %></td>
-      <td><%= link_to 'View/Manage Order', order_index_path %></td>
+      <td><%= link_to 'Review Order', order_manage_path(order) %></td>
     </tr>
   <% end %>
   </tbody>
 </table>
-
 <br>
+
 <%= link_to 'Home', root_path %>

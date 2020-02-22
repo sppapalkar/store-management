@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'order/review', to: 'orders#review'
   post 'order/place', to: 'orders#create'
   get 'order/place', to: 'orders#index'
+  get 'order/manage/:id', to: 'orders#manage', :as => :order_manage
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,11 +1,8 @@
-<%= form_for card, :url => {:action => 'create', :id => card, :controller => "orders"} do |form| %>
-  <div>
-    <%= form.label :card_id, 'Select Card' %>
-    <%= collection_select( :card, :id, Card.where(:user_id => current_user.id), :id, :number, {}, { multiple: false, include_blank: true }) %>
-  </div>
-  <div class="actions">
-    <p>
-      <%= form.submit "Place Order" %>
-    </p>
-  </div>
-<% end %>
+<h3>Payment Details:</h3>
+<p>
+  Paid By: <%= @order.card_holder %>
+</p>
+<p>
+  Paid using credit card: <%= @order.card_number %>
+</p>
+<br>

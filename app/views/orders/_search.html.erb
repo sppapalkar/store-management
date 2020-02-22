@@ -1,0 +1,12 @@
+<%= form_tag order_index_path(method: :post) do |form| %>
+  <h5>Search By User</h5>
+  <div>
+    <%= form.label @user, 'Select Email' %>
+    <%= collection_select( @user, :id, User.all(), :id, :email, {}, { multiple: false, include_blank: true }) %>
+  </div>
+  <div class="actions">
+    <p>
+      <%= form.submit "Search" %>
+    </p>
+  </div>
+<% end %>
