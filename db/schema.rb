@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_20_185514) do
+ActiveRecord::Schema.define(version: 2020_02_22_165921) do
 
   create_table "cards", force: :cascade do |t|
     t.string "name"
@@ -70,8 +70,13 @@ ActiveRecord::Schema.define(version: 2020_02_20_185514) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
-    t.integer "card_id"
-    t.index ["card_id"], name: "index_orders_on_card_id"
+    t.string "phone", default: "", null: false
+    t.string "address", default: "", null: false
+    t.string "apt", default: "", null: false
+    t.string "city", default: "", null: false
+    t.string "postal_code", default: "", null: false
+    t.string "card_holder", default: "", null: false
+    t.string "card_number", default: "", null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -101,6 +106,5 @@ ActiveRecord::Schema.define(version: 2020_02_20_185514) do
   add_foreign_key "items", "categories"
   add_foreign_key "orderitems", "items"
   add_foreign_key "orderitems", "orders"
-  add_foreign_key "orders", "cards"
   add_foreign_key "orders", "users"
 end

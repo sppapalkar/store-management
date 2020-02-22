@@ -31,7 +31,7 @@
 
   <tbody>
   <% @cart_items.each do |cart_item| %>
-    <% item = Item.find(cart_item[:id]) %>
+    <% item = Item.find(cart_item.item_id) %>
     <tr>
       <td><%= item.brand %></td>
       <td><%= item.name %></td>

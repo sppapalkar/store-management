@@ -42,7 +42,10 @@
 
 <h3>Payment Details:</h3>
 <p>
-  Paid using credit card: <%= @card.number %>
+  Paid By: <%= @order.card_holder %>
+</p>
+<p>
+  Paid using credit card: <%= @order.card_number %>
 </p>
 <br>
 

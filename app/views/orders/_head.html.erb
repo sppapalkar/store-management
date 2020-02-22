@@ -4,11 +4,11 @@
 <p>
   <strong>Delivery Address:</strong> <br>
   <%= current_user.name%> <br>
-  <%= current_user.address + "," %> <br>
-  <%= current_user.apt + "," %> <br>
-  <%= current_user.city  + " - " + @current_user.postal_code%> <br>
+  <%= @order.address + "," %> <br>
+  <%= @order.apt + "," %> <br>
+  <%= @order.city  + " - " + @order.postal_code%> <br>
 </p>
 <p>
   <strong>Contact:</strong>
-  <%= current_user.phone%>
+  <%= @order.phone%>
 </p>
