@@ -1,8 +1,16 @@
-<%= form_tag order_index_path(method: :post) do |form| %>
-  <h5>Search By User</h5>
+<%= form_for :search, :url => {:action => 'index', :controller => "orders"}, :method => :post do |form| %>
+  <h4>Search Orders</h4>
   <div>
-    <%= form.label @user, 'Select Email' %>
-    <%= collection_select( @user, :id, User.all(), :id, :email, {}, { multiple: false, include_blank: true }) %>
+    <p>
+      Select By User Email:
+      <%= collection_select( :search, :user_id, User.all(), :id, :email, { include_blank: 'Select' }, { multiple: false }) %>
+    </p>
+  </div>
+  <div>
+    <p>
+      Select By Item Name:
+      <%= collection_select( :search, :item_id, Item.all(), :id, :get_name, {include_blank: 'Select'}, { multiple: false }) %>
+    </p>
   </div>
   <div class="actions">
     <p>

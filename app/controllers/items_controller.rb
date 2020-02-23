@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
+    filters = filter_params
     @items = Item.all
   end
 
@@ -79,5 +80,9 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :brand, :category_id, :restricted_item,
                                  :age_restricted_item, :quantity, :price, :popularity)
+  end
+
+  def filter_params
+    params.require(:filters).permit(:brand, category_id, :availability, :sort)
   end
 end

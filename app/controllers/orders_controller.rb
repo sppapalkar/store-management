@@ -1,12 +1,19 @@
 class OrdersController < ApplicationController
   before_action :set_session, only: [:review]
-  before_action :get_cart_items, :check_cart, :check_cards, :compute_totals, only: [:review, :create]
+  before_action :get_cart_items, :check_cart, :check_cards, :compute_totals, except: [:manage, :index]
 
   def index
     if current_user.admin?
-      @Item = Item.new
-      @User = User.new
-      @orders = Order.all
+      parameters = search_params
+      if parameters.nil? or (parameters[:user_id].empty? and parameters[:item_id].empty?)
+        @orders = Order.all
+      elsif not parameters[:user_id].empty? and not parameters[:item_id].empty?
+        search_by_user_and_item(parameters[:user_id], parameters[:item_id])
+      elsif not parameters[:user_id].empty?
+        search_by_user(parameters[:user_id])
+      else
+        search_by_item(parameters[:item_id])
+      end
     else
       @orders = Order.where(user_id: current_user.id)
     end
@@ -47,6 +54,12 @@ class OrdersController < ApplicationController
   # Whitelist Order params
   def order_params
     params.permit(:id)
+  end
+  # Whitelist Search params
+  def search_params
+    if params.has_key?(:search)
+      params.require(:search).permit(:user_id, :item_id)
+    end
   end
   # Fetch list of items for order
   def get_cart_items
@@ -129,5 +142,27 @@ class OrdersController < ApplicationController
     card = Card.find(card_params[:id])
     @order.card_holder = card.name
     @order.card_number = card.number
+  end
+  # Filter results based on User Id and Item Id
+  def search_by_user_and_item(user_id,item_id)
+    orderitems = Orderitem.where(:item_id => item_id)
+    ids = []
+    orderitems.each do |orderitem|
+      ids.append(orderitem.order_id) if orderitem.order.user_id == user_id
+    end
+    @orders = Order.where(id:ids)
+  end
+  # Filter results based on User Id
+  def search_by_user(user_id)
+    @orders = Order.where(:user_id => user_id)
+  end
+  # Filter results based on Item Id
+  def search_by_item(item_id)
+    orderitems = Orderitem.where(:item_id => item_id)
+    ids = []
+    orderitems.each do |orderitem|
+      ids.append(orderitem.order_id)
+    end
+    @orders = Order.where(id:ids)
   end
 end

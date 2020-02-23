@@ -1,0 +1,34 @@
+<%= form_for :filters, :url => {:action => 'index', :controller => "items"}, :method => :get do |form| %>
+  <h4>Filter Items</h4>
+  <div>
+    <p>
+      Search By Brand:
+      <%= collection_select( :filters, :brand, Item.group(:brand), :brand, :brand, { include_blank: 'Select' }, { multiple: false }) %>
+    </p>
+  </div>
+  <div>
+    <p>
+      Select By Category:
+      <%= collection_select( :filters, :category_id, Category.all, :id, :name, {include_blank: 'Select'}, { multiple: false }) %>
+    </p>
+  </div>
+  <div>
+    <p>
+      Availability:
+      <input id="available" name="filters[availability]" type="radio" value="A" /> Available
+      <input id="not_available" name="filters[availability]" type="radio" value="NA" /> Not Available<br />
+    </p>
+  </div>
+  <div>
+    <p>
+      Sort By:
+      <input id="popularity" name="filters[sort]" type="radio" value="P" /> Popularity
+      <input id="cost" name="filters[sort]" type="radio" value="C" /> Cost<br />
+    </p>
+  </div>
+  <div class="actions">
+    <p>
+      <%= form.submit "Apply Filters" %>
+    </p>
+  </div>
+<% end %>

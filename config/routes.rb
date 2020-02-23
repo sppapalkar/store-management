@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'cart/edit/:item_id', to: 'carts#edit', :as => :edit_cart
 
   get 'order/index', to: 'orders#index'
+  post 'order/index', to: 'orders#index'
   get 'order/review', to: 'orders#review'
   post 'order/place', to: 'orders#create'
   get 'order/place', to: 'orders#index'
