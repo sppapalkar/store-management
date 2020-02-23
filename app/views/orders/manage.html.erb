@@ -19,20 +19,19 @@
   </thead>
 
   <tbody>
-  <% @order_items.each do |order_item| %>
-    <% item = Item.find(order_item.item_id) %>
-    <tr>
-      <td><%= item.brand %></td>
-      <td><%= item.name %></td>
-      <td><%= item.price %></td>
-      <td><%= order_item.quantity %></td>
-      <td><%= item.price * order_item[:quantity] %></td>
-      <td><%= order_item.status %></td>
-      <% unless current_user.admin %>
-        <td><%= link_to 'Request Return', order_manage_path(@order)%></td>
-      <% end %>
-    </tr>
-  <% end %>
+    <% @order_items.each do |order_item| %>
+      <tr>
+        <td><%= order_item.brand %></td>
+        <td><%= order_item.name %></td>
+        <td><%= order_item.price %></td>
+        <td><%= order_item.quantity %></td>
+        <td><%= order_item.price * order_item.quantity %></td>
+        <td><%= order_item.status %></td>
+        <% unless current_user.admin %>
+          <td><%= link_to 'Request Return', order_manage_path(@order)%></td>
+        <% end %>
+      </tr>
+    <% end %>
   </tbody>
 </table>
 

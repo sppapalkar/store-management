@@ -17,15 +17,14 @@
   </thead>
 
   <tbody>
-  <% @order_items.each do |order_item| %>
-    <% item = Item.find(order_item.item_id) %>
-    <tr>
-      <td><%= item.brand %></td>
-      <td><%= item.name %></td>
-      <td><%= item.price %></td>
-      <td><%= order_item[:quantity] %></td>
-      <td><%= item.price * order_item[:quantity] %></td>
-    </tr>
+    <% @order_items.each do |order_item| %>
+      <tr>
+        <td><%= order_item.brand %></td>
+        <td><%= order_item.name %></td>
+        <td><%= order_item.price %></td>
+        <td><%= order_item.quantity %></td>
+        <td><%= order_item.price * order_item.quantity %></td>
+      </tr>
   <% end %>
   </tbody>
 </table>

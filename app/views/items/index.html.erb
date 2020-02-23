@@ -45,7 +45,7 @@
 <br>
 
 <% if current_user.admin %>
-  <%= link_to 'New Item', new_item_path %>
+  <%= link_to 'New Item', new_item_path %> <br>
   <%= link_to 'Back to Dashboard', admin_path %>
 <% else%>
   <%= link_to 'Home', root_path %>

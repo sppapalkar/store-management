@@ -109,13 +109,23 @@ class OrdersController < ApplicationController
     compute_discount
     @final_total = @sub_total + @tax_total - @discount
   end
+  # Update item quantities
+  def update_item_quantities
+    @cart_items.each do |cart_item|
+      item = Item.find(cart_item.item_id)
+      item.quantity -= cart_item.quantity
+      item.save
+    end
+  end
   # Save order items
   def create_order_items
     @cart_items.each do |cart_item|
-      order_item = Orderitem.new(:order_id => @order.id, :item_id => cart_item.item_id,
-                                  :quantity => cart_item.quantity, :status => 'Complete')
+      item = Item.find(cart_item.item_id)
+      order_item = Orderitem.new(:order_id => @order.id, :brand => item.brand, :name => item.name,
+                                  :quantity => cart_item.quantity, :price => item.price, :status => 'Complete')
       @order_items.append(order_item)
     end
+    update_item_quantities
     Orderitem.transaction do
       @order_items.each(&:save!)
     end

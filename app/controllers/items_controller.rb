@@ -1,18 +1,28 @@
+# frozen_string_literal: true
 class ItemsController < ApplicationController
-  before_action :check_admin, except: [:show, :index]
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin, except: %i[show index]
+  before_action :set_item, only: %i[show edit update destroy]
 
   # GET /items
   # GET /items.json
   def index
-    filters = filter_params
     @items = Item.all
+    filters = filter_params
+    unless filters.nil?
+      filter_items_by_brand(filters[:brand]) unless filters[:brand].empty?
+      filter_items_by_category(filters[:category_id]) unless filters[:category_id].empty?
+      if filters.has_key?(:availability)
+        filter_items_by_availability(filters[:availability])
+      end
+      if filters.has_key?(:sort)
+        sort_items(filters[:sort])
+      end
+    end
   end
 
   # GET /items/1
   # GET /items/1.json
-  def show
-  end
+  def show; end
 
   # GET /items/new
   def new
@@ -20,8 +30,7 @@ class ItemsController < ApplicationController
   end
 
   # GET /items/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /items
   # POST /items.json
@@ -66,7 +75,7 @@ class ItemsController < ApplicationController
   private
   # Check if Admin has logged In
   def check_admin
-    unless user_signed_in? and current_user.admin
+    unless user_signed_in? && current_user.admin
       redirect_to root_path, notice: 'You dont have the rights to access the page'
     end
   end
@@ -83,6 +92,32 @@ class ItemsController < ApplicationController
   end
 
   def filter_params
-    params.require(:filters).permit(:brand, category_id, :availability, :sort)
+    if params.key?(:filters)
+      params.require(:filters).permit(:brand, :category_id, :availability, :sort)
+    end
+  end
+
+  def filter_items_by_brand(brand)
+    @items = @items.select { |item| item.brand == brand }
+  end
+
+  def filter_items_by_category(id)
+    @items = @items.select { |item| item.category_id == id.to_i }
+  end
+
+  def filter_items_by_availability(availability)
+    if availability == "A"
+      @items = @items.select { |item| item.quantity > 0 }
+    else
+      @items = @items.select { |item| item.quantity == 0 }
+    end
+  end
+
+  def sort_items(key)
+    if key == "P"
+      @items.sort_by(&:popularity)
+    elsif key == "C"
+      @items = @items.sort_by(&:price)
+    end
   end
 end

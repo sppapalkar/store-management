@@ -58,9 +58,10 @@ ActiveRecord::Schema.define(version: 2020_02_22_203548) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "order_id"
-    t.integer "item_id"
+    t.string "brand", default: "", null: false
+    t.string "name", default: "", null: false
+    t.decimal "price", default: "0.0", null: false
     t.string "status", default: "Complete", null: false
-    t.index ["item_id"], name: "index_orderitems_on_item_id"
     t.index ["order_id"], name: "index_orderitems_on_order_id"
   end
 
@@ -106,7 +107,6 @@ ActiveRecord::Schema.define(version: 2020_02_22_203548) do
   add_foreign_key "carts", "items"
   add_foreign_key "carts", "users"
   add_foreign_key "items", "categories"
-  add_foreign_key "orderitems", "items"
   add_foreign_key "orderitems", "orders"
   add_foreign_key "orders", "users"
 end
