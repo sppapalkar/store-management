@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>My Wishlist</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Item Brand</th>
+    <th>Item Name</th>
+    <th>Price</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @wishlist.each do |wish_item| %>
+    <% item = Item.find(wish_item.item_id) %>
+    <tr>
+      <td><%= item.brand %></td>
+      <td><%= item.name %></td>
+      <td><%= item.price %></td>
+      <% if item.quantity > 0 %>
+        <td><%= link_to 'Add to Cart', cart_path(:item_id => item), method: :post %></td>
+      <% else  %>
+        <td>Item Unavailable - Subscribe</td>
+      <%end %>
+      <td><%= link_to 'Remove From Wishlist', wishlist_path(:id => wish_item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= link_to 'Back', :back %> <br>
+<%= link_to 'All Items', items_path %>
+

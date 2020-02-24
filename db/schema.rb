@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_22_203548) do
+ActiveRecord::Schema.define(version: 2020_02_23_233517) do
 
   create_table "cards", force: :cascade do |t|
     t.string "name"
@@ -103,10 +103,21 @@ ActiveRecord::Schema.define(version: 2020_02_22_203548) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wishlists", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.integer "item_id"
+    t.index ["item_id"], name: "index_wishlists_on_item_id"
+    t.index ["user_id"], name: "index_wishlists_on_user_id"
+  end
+
   add_foreign_key "cards", "users"
   add_foreign_key "carts", "items"
   add_foreign_key "carts", "users"
   add_foreign_key "items", "categories"
   add_foreign_key "orderitems", "orders"
   add_foreign_key "orders", "users"
+  add_foreign_key "wishlists", "items"
+  add_foreign_key "wishlists", "users"
 end

@@ -26,6 +26,7 @@
         <td><%= item.age_restricted_item %></td>
         <td><%= item.restricted_item %></td>
         <td><%= item.price %></td>
+        <td><%= link_to 'Add to Wishlist', wishlist_add_path(:item_id => item), method: :post %></td>
         <td><%= link_to 'Show', item %></td>
         <% if current_user.admin %>
           <td><%= link_to 'Edit', edit_item_path(item) %></td>

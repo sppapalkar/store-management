@@ -1,6 +1,4 @@
 class CartsController < ApplicationController
-  # before_action :set_item, only: [:add, :edit]
-  # before_action :set_cart, only: [:update, :destroy]
   before_action :set_cart_item, except: [:index]
   def index
     @cart_items = Cart.where(:user_id => current_user.id)

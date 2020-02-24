@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   post 'order/place', to: 'orders#create'
   get 'order/place', to: 'orders#index'
   get 'order/manage/:id', to: 'orders#manage', :as => :order_manage
-
+  get 'wishlist', to: 'wishlists#index'
+  get 'wishlist/add', to: 'wishlists#index'
+  post 'wishlist/add', to: 'wishlists#add'
+  delete 'wishlist', to: 'wishlists#destroy'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
