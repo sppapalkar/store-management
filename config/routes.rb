@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   root to: 'welcome#index'
 
   get 'admin', to: 'admin#index'
+  get 'admin/approvals', to: 'admin#approvals'
+  post 'admin/approve', to: 'admin#approve'
+  post 'admin/reject', to: 'admin#reject'
 
   get 'cart', to: 'carts#index'
   post 'cart', to: 'carts#add'
