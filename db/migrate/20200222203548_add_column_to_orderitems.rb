@@ -3,7 +3,7 @@ class AddColumnToOrderitems < ActiveRecord::Migration[6.0]
     add_column :orderitems, :brand, :string, null: false, default: ''
     add_column :orderitems, :name, :string, null: false, default: ''
     add_column :orderitems, :price, :decimal, null: false, default: 0.0
-    add_column :orderitems, :status, :string, null: false, default: 'Complete'
+    add_column :orderitems, :status, :string, null: false, default: 'Purchased'
   end
   def self.down
     remove_column :orderitems, :brand

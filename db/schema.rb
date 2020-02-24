@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_24_055634) do
+ActiveRecord::Schema.define(version: 2020_02_23_233517) do
 
   create_table "cards", force: :cascade do |t|
     t.string "name"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2020_02_24_055634) do
     t.string "brand", default: "", null: false
     t.string "name", default: "", null: false
     t.decimal "price", default: "0.0", null: false
-    t.string "status", default: "Complete", null: false
+    t.string "status", default: "Purchased", null: false
     t.index ["order_id"], name: "index_orderitems_on_order_id"
   end
 
@@ -81,19 +81,6 @@ ActiveRecord::Schema.define(version: 2020_02_24_055634) do
     t.string "card_holder", default: "", null: false
     t.string "card_number", default: "", null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
-  end
-
-  create_table "requests", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "status", default: "Pending", null: false
-    t.string "type", default: "S", null: false
-    t.integer "order_id"
-    t.integer "orderitem_id"
-    t.integer "user_id"
-    t.index ["order_id"], name: "index_requests_on_order_id"
-    t.index ["orderitem_id"], name: "index_requests_on_orderitem_id"
-    t.index ["user_id"], name: "index_requests_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -131,9 +118,6 @@ ActiveRecord::Schema.define(version: 2020_02_24_055634) do
   add_foreign_key "items", "categories"
   add_foreign_key "orderitems", "orders"
   add_foreign_key "orders", "users"
-  add_foreign_key "requests", "orderitems"
-  add_foreign_key "requests", "orders"
-  add_foreign_key "requests", "users"
   add_foreign_key "wishlists", "items"
   add_foreign_key "wishlists", "users"
 end
