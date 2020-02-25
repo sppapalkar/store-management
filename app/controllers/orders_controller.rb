@@ -100,7 +100,7 @@ class OrdersController < ApplicationController
   # Compute discount for senior citizen
   def compute_discount
     @discount = 0.0
-    if ((Date.parse(Time.now.strftime("%y/%m/%d")) - current_user.date_of_birth)/365).floor > 65
+    if current_user.get_age > 65
       @discount = @sub_total * (0.1)
     end
   end
