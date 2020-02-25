@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_session, only: [:review]
-  before_action :get_cart_items, :check_cart, :check_cards, :compute_totals, except: [:manage, :index]
+  before_action :get_cart_items, :check_cart, :check_cards, :compute_totals, except: [:manage, :index, :return]
 
   def index
     if current_user.admin?
@@ -41,7 +41,14 @@ class OrdersController < ApplicationController
       redirect_to root_path, notice: 'Could Not Place the Order'
     end
   end
-
+  def return
+    order_item = Orderitem.find(order_params[:orderitem_id])
+    order = Order.find(order_params[:order_id])
+    unless order_item.nil?
+      order_item.update(status: 'Return Requested')
+      redirect_to order_manage_path(order), notice: 'Status Updated'
+    end
+  end
   private
   # Whitelist Item params
   def item_params
@@ -53,7 +60,7 @@ class OrdersController < ApplicationController
   end
   # Whitelist Order params
   def order_params
-    params.permit(:id)
+    params.permit(:id, :order_id, :orderitem_id)
   end
   # Whitelist Search params
   def search_params

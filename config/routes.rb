@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   get 'admin', to: 'admin#index'
   get 'admin/approvals', to: 'admin#approvals'
+  get 'admin/returns', to: 'admin#returns'
   post 'admin/approve', to: 'admin#approve'
   post 'admin/reject', to: 'admin#reject'
 
@@ -24,6 +25,7 @@ Rails.application.routes.draw do
   post 'order/place', to: 'orders#create'
   get 'order/place', to: 'orders#index'
   get 'order/manage/:id', to: 'orders#manage', :as => :order_manage
+  post 'order/return', to: 'orders#return'
   get 'wishlist', to: 'wishlists#index'
   get 'wishlist/add', to: 'wishlists#index'
   post 'wishlist/add', to: 'wishlists#add'

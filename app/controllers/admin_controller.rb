@@ -5,14 +5,21 @@ class AdminController < ApplicationController
     end
   end
   def approvals
-    @order_items = Orderitem.where(status: "Pending Approval")
+    @order_items = Orderitem.where(status: 'Pending Approval')
+  end
+  def returns
+    @order_items = Orderitem.where(status: 'Return Requested')
   end
   def approve
     parameters = orderitem_params
     order = Order.find(parameters[:order_id])
     orderitem = Orderitem.find(parameters[:orderitem_id])
-    if orderitem.status = 'Pending Approval'
-      orderitem.update(status: 'Purchased')
+    unless orderitem.nil?
+      if orderitem.status == 'Pending Approval'
+        orderitem.update(status: 'Purchased')
+      elsif orderitem.status == 'Return Requested'
+        orderitem.update(status: 'Returned')
+      end
     end
     redirect_to order_manage_path(order), notice: 'Status Updated'
   end
@@ -20,8 +27,12 @@ class AdminController < ApplicationController
     parameters = orderitem_params
     order = Order.find(parameters[:order_id])
     orderitem = Orderitem.find(parameters[:orderitem_id])
-    if orderitem.status = 'Pending Approval'
-      orderitem.update(status: 'Request Rejected - Refunded')
+    unless orderitem.nil?
+      if orderitem.status == 'Pending Approval'
+        orderitem.update(status: 'Request Rejected - Refunded')
+      elsif orderitem.status == 'Return Requested'
+        orderitem.update(status: 'Return Request Rejected')
+      end
     end
     redirect_to order_manage_path(order), notice: 'Status Updated'
   end

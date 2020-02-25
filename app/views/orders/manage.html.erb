@@ -28,9 +28,9 @@
         <td><%= order_item.price * order_item.quantity %></td>
         <td><%= order_item.status %></td>
         <% if order_item.status == "Purchased" and @order.user_id == current_user.id %>
-          <td><%= link_to 'Request Return', order_manage_path(@order)%></td>
+          <td><%= link_to 'Request Return', order_return_path(:order_id => @order.id, :orderitem_id => order_item.id), method: :post%></td>
         <% end %>
-        <% if order_item.status == "Pending Approval" and current_user.admin %>
+        <% if ["Pending Approval", "Return Requested"].include?(order_item.status) and current_user.admin %>
           <td><%= link_to 'Approve', admin_approve_path(:order_id => @order.id, :orderitem_id => order_item.id), method: :post %></td>
           <td><%= link_to 'Reject', admin_reject_path(:order_id => @order.id, :orderitem_id => order_item.id), method: :post %></td>
         <% end %>
