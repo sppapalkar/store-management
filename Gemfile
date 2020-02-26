@@ -34,6 +34,8 @@ gem 'jbuilder', '~> 2.7'
 #User and admin control
 gem 'devise'
 
+# Configure env variables
+gem 'figaro'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
