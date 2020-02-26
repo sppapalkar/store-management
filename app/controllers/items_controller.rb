@@ -65,6 +65,7 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
+    delete_item_data
     @item.destroy
     respond_to do |format|
       format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
@@ -130,5 +131,12 @@ class ItemsController < ApplicationController
     elsif key == "C"
       @items = @items.sort_by(&:price)
     end
+  end
+
+  def delete_item_data
+    id = params[:id]
+    Cart.where(item_id: id).destroy_all
+    Subscription.where(item_id: id).destroy_all
+    Wishlist.where(item_id: id).destroy_all
   end
 end

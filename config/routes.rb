@@ -22,10 +22,12 @@ Rails.application.routes.draw do
   get 'order/index', to: 'orders#index'
   post 'order/index', to: 'orders#index'
   get 'order/review', to: 'orders#review'
+  post 'order/authenticate', to: 'orders#authenticate'
   post 'order/place', to: 'orders#create'
   get 'order/place', to: 'orders#index'
   get 'order/manage/:id', to: 'orders#manage', :as => :order_manage
   post 'order/return', to: 'orders#return'
+
   get 'wishlist', to: 'wishlists#index'
   get 'wishlist/add', to: 'wishlists#index'
   post 'wishlist/add', to: 'wishlists#add'

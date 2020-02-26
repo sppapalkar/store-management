@@ -54,6 +54,7 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+    delete_user_data
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
@@ -84,5 +85,12 @@ class UsersController < ApplicationController
                                    :password_confirmation, :address, :apt, :city,
                                    :postal_code)
     end
+  end
+  def delete_user_data
+    id = params[:id]
+    Order.where(user_id: id).destroy_all
+    Cart.where(user_id: id).destroy_all
+    Card.where(user_id: id).destroy_all
+    Wishlist.where(user_id: id).destroy_all
   end
 end

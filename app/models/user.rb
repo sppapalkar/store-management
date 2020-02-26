@@ -8,6 +8,8 @@ class User < ApplicationRecord
             :apt, :city, :postal_code, presence: true
   has_many :cards
   has_many :orders
+  has_many :carts
+  has_many :wishlists
   def get_age
     ((Date.parse(Time.now.strftime("%y/%m/%d")) - self.date_of_birth)/365).floor
   end

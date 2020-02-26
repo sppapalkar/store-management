@@ -28,19 +28,29 @@ class OrdersController < ApplicationController
     @card = Card.new
   end
 
+  def authenticate
+    session['card_id'] = card_params[:id]
+    session['otp'] = generate_otp
+  end
+
   def create
-    @order = Order.new
-    assign_order_attributes
-    if @order.save
-      @order_items = []
-      create_order_items
-      if session[:item_id] == -1
-        clear_cart
+    if verify_otp
+      @order = Order.new
+      assign_order_attributes
+      if @order.save
+        @order_items = []
+        create_order_items
+        if session[:item_id] == -1
+          clear_cart
+        end
+      else
+        redirect_to root_path, notice: 'Could Not Place the Order'
       end
     else
-      redirect_to root_path, notice: 'Could Not Place the Order'
+      redirect_to cart_path, :notice => "Invalid OTP - Purchase Cancelled"
     end
   end
+
   def return
     order_item = Orderitem.find(order_params[:orderitem_id])
     order = Order.find(order_params[:order_id])
@@ -161,7 +171,7 @@ class OrdersController < ApplicationController
     @order.discount = @discount
     @order.amount = @final_total
     # Card Details
-    card = Card.find(card_params[:id])
+    card = Card.find(session['card_id'])
     @order.card_holder = card.name
     @order.card_number = card.number
   end
@@ -186,5 +196,11 @@ class OrdersController < ApplicationController
       ids.append(orderitem.order_id)
     end
     @orders = Order.where(id:ids)
+  end
+  def generate_otp
+    rand.to_s[2..7]
+  end
+  def verify_otp
+    session['otp'] == params[:otp][:code]
   end
 end

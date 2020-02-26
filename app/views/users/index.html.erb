@@ -31,7 +31,7 @@
           <td><%= link_to 'Show', user %></td>
           <td><%= link_to 'Edit', edit_user_path(user) %></td>
           <td><%= link_to 'View Orders', order_index_path(:search => {:user_id => user, :item_id => ''}), :method => :post %></td>
-          <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+          <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'This will delete ALL user data. Are you sure?' }  %></td>
         </tr>
       <% end %>
     <% end %>

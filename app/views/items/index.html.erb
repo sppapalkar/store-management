@@ -12,7 +12,11 @@
       <th>Name</th>
       <th>Age Restricted</th>
       <th>Restricted</th>
+      <% if current_user.admin %>
+        <th>Available Quantity</th>
+      <% end %>
       <th>Price</th>
+      <th>Actions</th>
     </tr>
 
   </thead>
@@ -25,17 +29,21 @@
         <td><%= item.name %></td>
         <td><%= item.age_restricted_item %></td>
         <td><%= item.restricted_item %></td>
+        <% if current_user.admin %>
+          <td><%= item.quantity %></td>
+        <% end %>
         <td><%= item.price %></td>
-        <td><%= link_to 'Add to Wishlist', wishlist_add_path(:item_id => item), method: :post %></td>
         <td><%= link_to 'Show', item %></td>
+        <td><%= link_to 'Add to Wishlist', wishlist_add_path(:item_id => item), method: :post %></td>
         <% if current_user.admin %>
           <td><%= link_to 'Edit', edit_item_path(item) %></td>
           <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% else %>
           <% if item.quantity > 0 %>
             <td><%= link_to 'Add to Cart', cart_path(:item_id => item), method: :post %></td>
+            <td><%= link_to 'Buy Now', order_review_path(:item_id => item)%></td>
           <% else  %>
-            <td><%= link_to 'Item Unavailable - Subscribe', item_subscribe_path(:item => {:id => item.id}), method: :post %></td>
+            <td><%= link_to 'Unavailable - Subscribe', item_subscribe_path(:item => {:id => item.id}), method: :post %></td>
           <%end %>
         <%end %>
       </tr>
