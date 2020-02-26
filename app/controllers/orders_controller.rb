@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
   def authenticate
     session['card_id'] = card_params[:id]
     session['otp'] = generate_otp
-    OtpMailer.otp_email(@user).deliver
+    OtpMailer.otp_email(current_user, session['otp']).deliver
   end
 
   def create
