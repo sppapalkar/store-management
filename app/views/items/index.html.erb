@@ -35,7 +35,7 @@
           <% if item.quantity > 0 %>
             <td><%= link_to 'Add to Cart', cart_path(:item_id => item), method: :post %></td>
           <% else  %>
-            <td>Item Unavailable - Subscribe</td>
+            <td><%= link_to 'Item Unavailable - Subscribe', item_subscribe_path(:item => {:id => item.id}), method: :post %></td>
           <%end %>
         <%end %>
       </tr>

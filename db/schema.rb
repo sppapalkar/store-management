@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_23_233517) do
+ActiveRecord::Schema.define(version: 2020_02_26_024052) do
 
   create_table "cards", force: :cascade do |t|
     t.string "name"
@@ -83,6 +83,14 @@ ActiveRecord::Schema.define(version: 2020_02_23_233517) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.string "email"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "item_id"
+    t.index ["item_id"], name: "index_subscriptions_on_item_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -118,6 +126,7 @@ ActiveRecord::Schema.define(version: 2020_02_23_233517) do
   add_foreign_key "items", "categories"
   add_foreign_key "orderitems", "orders"
   add_foreign_key "orders", "users"
+  add_foreign_key "subscriptions", "items"
   add_foreign_key "wishlists", "items"
   add_foreign_key "wishlists", "users"
 end

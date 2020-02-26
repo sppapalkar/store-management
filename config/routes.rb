@@ -30,5 +30,6 @@ Rails.application.routes.draw do
   get 'wishlist/add', to: 'wishlists#index'
   post 'wishlist/add', to: 'wishlists#add'
   delete 'wishlist', to: 'wishlists#destroy'
+  post 'item/subscribe', to: 'items#subscribe'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
