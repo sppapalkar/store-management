@@ -1,0 +1,10 @@
+<h1>Editing Feedback</h1>
+
+<%= render 'form', feedback: @feedback %>
+
+<%= link_to 'Show', @feedback %> |
+<% if user_signed_in? && current_user.admin %>
+  <%= link_to 'Back', feedbacks_path %>
+<%else %>
+  <%= link_to 'Back', root_path %>
+<% end %>
