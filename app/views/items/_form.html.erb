@@ -19,6 +19,14 @@
     <%= form.label :brand %>
     <%= form.text_field :brand %>
   </div>
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+  <div class="field">
+    <%= form.label :remote_image_url, 'or image URL' %>
+    <%= form.text_field :remote_image_url %>
+  </div>
   <div>
     <%= form.label :category_id %>
     <%= collection_select( :item, :category_id, Category.all, :id, :name, {}, { multiple: false, include_blank: true }) %>
@@ -43,6 +51,7 @@
     <%= form.label :popularity %>
     <%= form.text_field :popularity %>
   </div>
+
 
 
 

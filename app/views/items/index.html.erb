@@ -7,6 +7,7 @@
 <table style="width:100%">
   <thead>
     <tr>
+      <th> </th>
       <th>Category</th>
       <th>Brand</th>
       <th colspan>Name</th>
@@ -24,6 +25,7 @@
   <tbody>
     <% @items.each do |item| %>
       <tr>
+        <td><%= image_tag item.image_url(:thumb).to_s %></td>
         <td><%= item.category.name %></td>
         <td><%= item.brand %></td>
         <td><%= item.name %></td>

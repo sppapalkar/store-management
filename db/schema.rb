@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_27_183621) do
+ActiveRecord::Schema.define(version: 2020_02_27_200153) do
 
   create_table "cards", force: :cascade do |t|
     t.string "name"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2020_02_27_183621) do
     t.decimal "price", default: "0.0", null: false
     t.decimal "popularity", default: "1.0", null: false
     t.integer "category_id"
+    t.string "image"
     t.index ["category_id"], name: "index_items_on_category_id"
   end
 

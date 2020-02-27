@@ -68,4 +68,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'bootstrap', '~>4.3.1'
 gem 'bootstrap_form', '>= 4.0.0.alpha1'
-
+gem 'rmagick', '4.1.0.rc2'
+gem 'carrierwave'
