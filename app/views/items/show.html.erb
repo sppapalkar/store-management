@@ -12,19 +12,21 @@
 </p>
   <strong>Category:</strong>
   <%= @item.category_id %>
-<p>
+<p><br>
   <strong>Restricted Item:</strong>
   <%= @item.restricted_item %>
 </p>
   <strong>Age Restricted Item:</strong>
   <%= @item.age_restricted_item %>
-<p>
+<p><br>
   <strong>Quantity:</strong>
   <%= @item.quantity %>
 </p>
 
-<% if current_user.admin %>
-  <%= link_to 'Edit', edit_item_path(@item)  %>
+<% if current_user %>
+  <% if current_user.admin %>
+    <%= link_to 'Edit', edit_item_path(@item)  %>
+  <% end %>
+    <%= link_to 'Buy Now', order_review_path(:item_id => @item)%> <br>
 <% end %>
-<%= link_to 'Buy Now', order_review_path(:item_id => @item)%>
-<%= link_to 'Back', items_path %>
+<%= link_to 'All Items', items_path %>
