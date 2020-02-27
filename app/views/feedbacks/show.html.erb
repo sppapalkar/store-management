@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @feedback.email %>
+</p>
+
+<p>
+  <strong>Review:</strong>
+  <%= @feedback.review %>
+</p>
+
+<%= link_to 'Edit', edit_feedback_path(@feedback) %> |
+<% if user_signed_in? && current_user.admin %>
+  <%= link_to 'Back', feedbacks_path %>
+<%else %>
+  <%= link_to 'Back', root_path %>
+<% end %>
