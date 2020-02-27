@@ -80,6 +80,7 @@ class ItemsController < ApplicationController
       redirect_to items_path, notice: 'Item already subscribed'
     else
       subscription.save
+      SubscriberMailer.subscribe_email(subscription).deliver_now
       redirect_to items_path, notice: 'Item subscribed for alerts'
     end
   end
