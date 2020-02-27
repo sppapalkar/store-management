@@ -1,0 +1,18 @@
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<h4>Congratulations! Your order has been successfully placed.</h4>
+<p>
+  <% @final_item.each do |item| %>
+    Item: <%= item.name %> <br>
+    Brand: <%= item.brand %> <br>
+    Quantity: <%= item.quantity %> <br>
+    Price: <%= item.price %><br>
+    Status: <%= item.status %><br>
+  <% end %>
+  Thank you for shopping with us :)
+</p>
+</body>
+</html>

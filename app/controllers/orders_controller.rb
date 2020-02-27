@@ -44,6 +44,7 @@ class OrdersController < ApplicationController
         if session[:item_id] == -1
           clear_cart
         end
+        OrderMailer.order_email(current_user, @order_items).deliver_now
       else
         redirect_to root_path, notice: 'Could Not Place the Order'
       end
