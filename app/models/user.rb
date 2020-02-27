@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :name, :date_of_birth, :phone, :email, :encrypted_password, :address,
-            :apt, :city, :postal_code, presence: true
+            :city, :postal_code, presence: true
   has_many :cards
   has_many :orders
   has_many :carts

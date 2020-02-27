@@ -8,27 +8,27 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :name %><br />
+<!--    <%#= f.label :name %><br />-->
     <%= f.text_field :name, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :date_of_birth, 'Date of Birth' %><br />
+<!--    <%#= f.label :date_of_birth, 'Date of Birth' %><br />-->
     <%= f.date_field :date_of_birth, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :phone, 'Phone Number' %><br />
+<!--    <%#= f.label :phone, 'Phone Number' %><br />-->
     <%= f.text_field :phone, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
+<!--    <%#= f.label :email %><br />-->
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%#= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
@@ -36,28 +36,28 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+<!--    <%#= f.label :password_confirmation %><br />-->
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
   <div id = 'address'>
     <div class="field">
-      <%= f.label :address, 'Street Address' %><br />
+<!--      <%#= f.label :address, 'Street Address' %><br />-->
       <%= f.text_field :address, autofocus: true %>
     </div>
 
     <div class="field">
-      <%= f.label :apt, 'Apt/Suite' %><br />
+<!--      <%#= f.label :apt, 'Apt/Suite' %><br />-->
       <%= f.text_field :apt, autofocus: true %>
     </div>
 
     <div class="field">
-      <%= f.label :city %><br />
+<!--      <%#= f.label :city %><br />-->
       <%= f.text_field :city, autofocus: true %>
     </div>
 
     <div class="field">
-      <%= f.label :postal_code %><br />
+<!--      <%#= f.label :postal_code %><br />-->
       <%= f.text_field :postal_code, autofocus: true %>
     </div>
   </div>
