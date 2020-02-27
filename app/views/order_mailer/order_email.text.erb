@@ -1,0 +1,9 @@
+Congratulations! Your order has been successfully placed.
+
+<%= @final_item.each do |item| %>
+  <%= item.name %>
+  <%= item.brand %>
+  <%= item.quantity %>
+  <%= item.price %>
+  <%= item.status %>
+<% end %>
