@@ -1,4 +1,4 @@
-<%= form_for card, :method => :post, :url => {:action => 'authenticate', :id => card, :controller => "orders"} do |form| %>
+<%= bootstrap_form_for card, :method => :post, :url => {:action => 'authenticate', :id => card, :controller => "orders"} do |form| %>
   <div>
     <%= form.label :card_id, 'Select Card' %>
     <%= collection_select( :card, :id, Card.where(:user_id => current_user.id), :id, :number, {}, { multiple: false, include_blank: true }) %>

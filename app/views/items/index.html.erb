@@ -4,19 +4,19 @@
 
 <%= render 'search' %>
 <br>
-<table>
+<table style="width:100%">
   <thead>
     <tr>
       <th>Category</th>
       <th>Brand</th>
-      <th>Name</th>
+      <th colspan>Name</th>
       <th>Age Restricted</th>
       <th>Restricted</th>
       <% if current_user.admin %>
         <th>Available Quantity</th>
       <% end %>
       <th>Price</th>
-      <th>Actions</th>
+      <th colspan>Actions</th>
     </tr>
 
   </thead>

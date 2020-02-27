@@ -67,5 +67,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Style our webpage
 
 gem 'bootstrap', '~>4.3.1'
-
+gem 'bootstrap_form', '>= 4.0.0.alpha1'
 

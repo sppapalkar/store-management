@@ -1,0 +1,21 @@
+<nav class="navbar navbar-light bg-warning">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="/">Store Management System</a>
+    </div>
+    <nav>
+        <ul class="nav nav-pills nav-fills">
+
+            <% if user_signed_in? %>
+
+            <li class="nav-item">
+                <%= link_to "#{current_user.name}", edit_user_registration_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link"%>
+            </li>
+            <% end %>
+
+        </ul>
+
+    </nav>
+</nav>

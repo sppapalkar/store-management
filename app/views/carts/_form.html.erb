@@ -1,4 +1,4 @@
-<%= form_for cart, :url => {:action => 'update', :id => cart, :controller => "carts"} do |form| %>
+<%= bootstrap_form_for cart, :url => {:action => 'update', :id => cart, :controller => "carts"} do |form| %>
   <% if cart.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(cart.errors.count, "error") %> prohibited this card from being saved:</h2>

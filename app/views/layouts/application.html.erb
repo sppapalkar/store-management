@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>StoreManagement</title>
+    <meta name="viewport" content="width=device-witdh, initial-scale=1.0">
+    <title>Store Management</title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Amchi kuthe shakha nahi" %>%">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,11 +12,13 @@
   </head>
 
   <body>
-    <%#= render 'layouts/navbar' %>
+    <%= render 'layouts/navbar' %>
     <%= render 'layouts/alerts' %>
+    <div class="container">
     <%= yield %>
+    </div>
+    <%= render 'layouts/footer' %>
+    
   </body>
-  <footer>
-    <%#= render 'layouts/footer' %>
-  </footer>
+
 </html>

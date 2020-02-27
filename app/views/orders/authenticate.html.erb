@@ -1,5 +1,5 @@
 <h1>Authenticate Purchase</h1>
-<%= form_for :otp, :url => {:action => 'create', :controller => "orders"} do |form| %>
+<%= bootstrap_form_for :otp, :url => {:action => 'create', :controller => "orders"} do |form| %>
   <div>
     <%= form.label :code, 'Enter OTP' %>
     <%= form.text_field :code %>
