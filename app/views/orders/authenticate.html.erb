@@ -4,8 +4,6 @@
     <%= form.label :code, 'Enter OTP' %>
     <%= form.text_field :code %>
   </div>
-  <br>
-  <p><%= session["otp"] %></p>
   <div class="actions">
     <p>
       <%= form.submit "Authenticate" %>
