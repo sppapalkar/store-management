@@ -1,8 +1,12 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%#= notice %></p>-->
 
 <h1>My Cart</h1>
 
-<table style="width:100%" class="table">
+<div class = "float-right">
+  <%= link_to 'Clear Cart', cart_clear_path %> <br>
+</div>
+
+<table style="width:100%" class="table" >
   <thead>
   <tr>
     <th>Item Brand</th>
@@ -10,6 +14,7 @@
     <th>Price</th>
     <th>Quantity</th>
     <th>Total Price</th>
+    <th>Action</th>
   </tr>
   </thead>
   <tbody>
@@ -21,8 +26,8 @@
       <td><%= item.price %></td>
       <td><%= cart_item.quantity %></td>
       <td><%= item.price * cart_item.quantity %></td>
-      <td><%= link_to 'Change Quantity', edit_cart_path(item) %></td>
-      <td><%= link_to 'Remove From Cart', cart_path(:id => cart_item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Change Quantity', edit_cart_path(item) %> |
+      <%= link_to 'Remove From Cart', cart_path(:id => cart_item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
   </tbody>

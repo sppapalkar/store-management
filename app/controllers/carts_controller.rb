@@ -1,25 +1,29 @@
 class CartsController < ApplicationController
-  before_action :set_cart_item, except: [:index]
+  before_action :set_cart_item, except: [:index, :clear]
   def index
     @cart_items = Cart.where(:user_id => current_user.id)
   end
   def add
-    if @cart_item.nil?
-      @new_item = Cart.new(cart_params)
-      @new_item.user_id = current_user.id
-      @new_item.quantity = 1
-      respond_to do |format|
-        if @new_item.save
-          format.html { redirect_to cart_path, notice: 'Item successfully added to cart'}
-          format.json { render 'carts/index', status: :created, location: @new_item }
-        else
-          format.html { render 'items/index' }
-          format.json { render json: @new_item.errors, status: :unprocessable_entity }
-        end
-      end
+    if age_restriction
+        redirect_to items_path, notice: "Item is age restricted"
     else
-      params[:cart] = {:quantity => @cart_item.quantity + 1}
-      update
+      if @cart_item.nil?
+        @new_item = Cart.new(cart_params)
+        @new_item.user_id = current_user.id
+        @new_item.quantity = 1
+        respond_to do |format|
+          if @new_item.save
+            format.html { redirect_to cart_path, notice: 'Item successfully added to cart'}
+            format.json { render 'carts/index', status: :created, location: @new_item }
+          else
+            format.html { render 'items/index' }
+            format.json { render json: @new_item.errors, status: :unprocessable_entity }
+          end
+        end
+      else
+        params[:cart] = {:quantity => @cart_item.quantity + 1}
+        update
+      end
     end
   end
 
@@ -47,6 +51,14 @@ class CartsController < ApplicationController
       format.html { redirect_to cart_path, notice: 'Item was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def clear
+    cart_items = Cart.where(:user_id => current_user.id)
+    cart_items.each do |cart_item|
+      cart_item.destroy
+    end
+    redirect_to cart_path, notice: 'Cart Cleared'
   end
 
   private
@@ -79,5 +91,8 @@ class CartsController < ApplicationController
     end
     set_item
   end
-
+  def age_restriction
+    item = Item.find(cart_params[:item_id])
+    item.age_restricted_item and current_user.get_age < 18
+  end
 end

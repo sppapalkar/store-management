@@ -28,5 +28,7 @@
     <%= link_to 'Edit', edit_item_path(@item)  %>
   <% end %>
     <%= link_to 'Buy Now', order_review_path(:item_id => @item)%> <br>
+<% else%>
+  <%= link_to 'Sign In to Buy', new_user_session_path %> <br>
 <% end %>
 <%= link_to 'All Items', items_path %>
