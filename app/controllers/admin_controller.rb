@@ -19,6 +19,7 @@ class AdminController < ApplicationController
         orderitem.update(status: 'Purchased')
       elsif orderitem.status == 'Return Requested'
         orderitem.update(status: 'Returned')
+        ReturnMailer.return_approve(orderitem).deliver_now
       end
     end
     redirect_to order_manage_path(order), notice: 'Status Updated'
@@ -32,6 +33,7 @@ class AdminController < ApplicationController
         orderitem.update(status: 'Request Rejected - Refunded')
       elsif orderitem.status == 'Return Requested'
         orderitem.update(status: 'Return Request Rejected')
+        ReturnMailer.return_reject(orderitem).deliver_now
       end
     end
     redirect_to order_manage_path(order), notice: 'Status Updated'
