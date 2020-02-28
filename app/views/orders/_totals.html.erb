@@ -1,6 +1,10 @@
 <p>
   <strong>Sub Total:</strong>
   <%= @order.amount + @order.discount - @order.tax %> <br>
+  <% unless @order.discount == 0.0 %>
+    <strong>Senior Citizen Discount:</strong>
+    <%= @discount %> <br>
+  <% end %>
   <strong>Tax:</strong>
   <%= @order.tax %> <br>
   <strong>Final Amount:</strong>

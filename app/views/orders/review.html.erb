@@ -42,10 +42,14 @@
   <% end %>
   </tbody>
 </table>
-
+<br>
 <p>
   <strong>Sub Total:</strong>
   <%= @sub_total %> <br>
+  <% unless @discount == 0.0 %>
+    <strong>Senior Citizen Discount:</strong>
+    <%= @discount %> <br>
+  <% end %>
   <strong>Tax:</strong>
   <%= @tax_total %> <br>
   <strong>Final Amount:</strong>
@@ -56,5 +60,5 @@
 <h3>Payment Details:</h3>
 <%= render 'form', card:@card %>
 
-<%= link_to 'Back', :back %> <br>
+<%= link_to 'Back to Cart', :cart_path %> <br>
 
