@@ -1,4 +1,4 @@
-<%= form_with(model: item, local: true) do |form| %>
+<%= bootstrap_form_with(model: item, local: true) do |form| %>
   <% if item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
@@ -12,19 +12,19 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
+    <% form.label :name %>
     <%= form.text_field :name %>
   </div>
   <div class="field">
-    <%= form.label :brand %>
+    <% form.label :brand %>
     <%= form.text_field :brand %>
   </div>
   <div class="field">
-    <%= form.label :image %>
+    <% form.label :image %>
     <%= form.file_field :image %>
   </div>
   <div class="field">
-    <%= form.label :remote_image_url, 'or image URL' %>
+    <% form.label :remote_image_url, 'or image URL' %>
     <%= form.text_field :remote_image_url %>
   </div>
   <div>
@@ -32,29 +32,25 @@
     <%= collection_select( :item, :category_id, Category.all, :id, :name, {}, { multiple: false, include_blank: true }) %>
   </div>
   <div class="field">
-    <%= form.label :price %>
+    <% form.label :price %>
     <%= form.text_field :price %>
   </div>
-  <div class="field">
-    <%= form.label :restricted_item %>
+  <div class="field"><br>
+    <% form.label :restricted_item %>
     <%= form.check_box :restricted_item %>
   </div>
   <div class="field">
-    <%= form.label :age_restricted_item %>
+    <% form.label :age_restricted_item %>
     <%= form.check_box :age_restricted_item %>
-  </div>
+  </div> <br>
   <div class="field">
-    <%= form.label :quantity %>
+    <% form.label :quantity %>
     <%= form.number_field :quantity %>
   </div>
   <div class="field">
-    <%= form.label :popularity %>
+    <% form.label :popularity %>
     <%= form.text_field :popularity %>
   </div>
-
-
-
-
   <div class="actions">
     <%= form.submit %>
   </div>

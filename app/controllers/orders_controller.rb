@@ -192,7 +192,8 @@ class OrdersController < ApplicationController
   end
   # Filter results based on Item Id
   def search_by_item(item_id)
-    orderitems = Orderitem.where(:item_id => item_id)
+    item = Item.find(item_id)
+    orderitems = Orderitem.where(:brand => item.brand, :name => item.name)
     ids = []
     orderitems.each do |orderitem|
       ids.append(orderitem.order_id)

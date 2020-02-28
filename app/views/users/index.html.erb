@@ -5,7 +5,7 @@
 <% if @users.empty? %>
   <p>No users to display</p>
 <% else %>
-  <table style="width:100%">
+  <table style="width:100%" class="table">
     <thead>
     <tr>
       <th>Email</th>
@@ -14,7 +14,7 @@
       <th>Phone Number</th>
       <th>City</th>
       <th>Postal Code</th>
-      <th></th>
+      <th>Actions</th>
     </tr>
     </thead>
 
@@ -28,10 +28,10 @@
           <td><%= user.phone %></td>
           <td><%= user.city %></td>
           <td><%= user.postal_code %></td>
-          <td><%= link_to 'Show', user %></td>
-          <td><%= link_to 'Edit', edit_user_path(user) %></td>
-          <td><%= link_to 'View Orders', order_index_path(:search => {:user_id => user, :item_id => ''}), :method => :post %></td>
-          <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'This will delete ALL user data. Are you sure?' }  %></td>
+          <td><%= link_to 'Show', user %> |
+          <%= link_to 'Edit', edit_user_path(user) %> |
+          <%= link_to 'View Orders', order_index_path(:search => {:user_id => user, :item_id => ''}), :method => :post %> |
+          <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'This will delete ALL user data. Are you sure?' }  %></td>
         </tr>
       <% end %>
     <% end %>

@@ -4,11 +4,15 @@
 
 <% if current_user.admin %>
   <br>
-  <%= render 'search' %>
+  <div class="card">
+    <div class="card-body">
+      <%= render 'search' %>
+    </div>
+  </div>
   <br>
 <% end %>
 
-<table style="width:100%">
+<table style="width:100%" class="table">
   <thead>
   <tr>
     <th>ID</th>
@@ -20,6 +24,7 @@
     <th>Discount</th>
     <th>Amount</th>
     <th>Status</th>
+    <th>Action</th>
   </tr>
   </thead>
 

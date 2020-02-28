@@ -55,6 +55,7 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1
   # DELETE /categories/1.json
   def destroy
+    delete_item_data
     @category.destroy
     respond_to do |format|
       format.html { redirect_to categories_url, notice: 'Category was successfully destroyed.' }
@@ -79,4 +80,13 @@ class CategoriesController < ApplicationController
     def category_params
       params.require(:category).permit(:name, :tax_slab)
     end
+  def delete_item_data
+    items = Item.where(category_id: params[:id])
+    items.each do |item|
+      Cart.where(item_id: item.id).destroy_all
+      Subscription.where(item_id: item.id).destroy_all
+      Wishlist.where(item_id: item.id).destroy_all
+      item.destroy
+    end
+  end
 end

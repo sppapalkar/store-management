@@ -1,10 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Items</h1>
-
-<%= render 'search' %>
 <br>
-<table style="width:100%">
+<div class="card">
+  <div class="card-body">
+    <%= render 'search' %>
+  </div>
+</div>
+
+<br>
+<table style="width:100%" class="table">
   <thead>
     <tr>
       <th> </th>
@@ -17,7 +22,10 @@
         <th>Available Quantity</th>
       <% end %>
       <th>Price</th>
-      <th colspan>Actions</th>
+      <th>Actions</th>
+      <% if current_user and current_user.admin %>
+        <th>Admin Actions</th>
+      <% end %>
     </tr>
 
   </thead>
@@ -35,20 +43,23 @@
           <td><%= item.quantity %></td>
         <% end %>
         <td><%= item.price %></td>
-        <td><%= link_to 'Show', item %></td>
+        <td><%= link_to 'Show', item %> |
         <% if current_user %>
-          <td><%= link_to 'Add to Wishlist', wishlist_add_path(:item_id => item), method: :post %></td>
+          <%= link_to 'Add to Wishlist', wishlist_add_path(:item_id => item), method: :post %> |
           <% if item.quantity > 0 %>
-            <td><%= link_to 'Add to Cart', cart_path(:item_id => item), method: :post %></td>
-            <td><%= link_to 'Buy Now', order_review_path(:item_id => item)%></td>
+            <%= link_to 'Add to Cart', cart_path(:item_id => item), method: :post %> |
+            <%= link_to 'Buy Now', order_review_path(:item_id => item)%> |
           <% else  %>
-            <td><%= link_to 'Unavailable - Subscribe', item_subscribe_path(:item => {:id => item.id}), method: :post %></td>
-          <%end %>
+            <%= link_to 'Unavailable - Subscribe', item_subscribe_path(:item => {:id => item.id}), method: :post %>
+          <%end %></td>
+          <td>
           <% if current_user.admin %>
-            <td><%= link_to 'Edit', edit_item_path(item) %></td>
-            <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <%= link_to 'Edit', edit_item_path(item) %> |
+            <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %>
           <%end %>
+          </td>
         <%end %>
+
       </tr>
     <% end %>
   </tbody>

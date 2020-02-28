@@ -37,7 +37,8 @@
 .idea/*
 .idea/workspace.xml
 .idea/store-management.iml
-
+# Image files
+*/uploads/*
 # hidden filesystem files
 .DS_Store
 

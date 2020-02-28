@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   validates :name, :date_of_birth, :phone, :email, :encrypted_password, :address,
             :city, :postal_code, presence: true
+  validates :postal_code, length: {minimum: 5, maximum: 5}
   has_many :cards
   has_many :orders
   has_many :carts

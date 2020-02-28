@@ -1,5 +1,5 @@
 <%= bootstrap_form_for :filters, :url => {:action => 'index', :controller => "items"}, :method => :get do |form| %>
-  <h4>Filter Items</h4>
+  <h5>Filter Items</h5>
   <div>
     <p>
       Search By Brand:
@@ -29,6 +29,7 @@
   <div class="actions">
     <p>
       <%= form.submit "Apply Filters" %>
+      <%= form.submit "Reset Filters" %>
     </p>
   </div>
 <% end %>
