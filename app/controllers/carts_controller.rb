@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  before_action :set_cart_item, except: [:index]
+  before_action :set_cart_item, except: [:index, :clear]
   def index
     @cart_items = Cart.where(:user_id => current_user.id)
   end
@@ -51,6 +51,14 @@ class CartsController < ApplicationController
       format.html { redirect_to cart_path, notice: 'Item was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def clear
+    cart_items = Cart.where(:user_id => current_user.id)
+    cart_items.each do |cart_item|
+      cart_item.destroy
+    end
+    redirect_to cart_path, notice: 'Cart Cleared'
   end
 
   private
