@@ -4,9 +4,9 @@ class SubscriberMailer < ApplicationMailer
   #
   #   en.subscriber_mailer.subscribe_email.subject
   #
-  def subscribe_email(subscription)
-    @email = subscription.email
-    @item_name = subscription.item_id
-    mail(to: @email, subject: "You're subscribed!")
+  def subscribe_email(subscription, item)
+    @item = item.name
+    @brand = item.brand
+    mail(to: subscription.email, subject: "You're subscribed!")
   end
 end
