@@ -81,7 +81,6 @@ class ItemsController < ApplicationController
       redirect_to items_path, notice: 'Item already subscribed'
     else
       subscription.save
-      SubscriberMailer.subscribe_email(subscription).deliver_now
       redirect_to items_path, notice: 'Item subscribed for alerts'
     end
   end
@@ -141,14 +140,16 @@ class ItemsController < ApplicationController
     Subscription.where(item_id: id).destroy_all
     Wishlist.where(item_id: id).destroy_all
   end
+
   # Send Availability Emails
   def check_subscriptions
     if @item.quantity == 0
       parameters = item_params
       if parameters.has_key?(:quantity) and parameters[:quantity].to_i > 0
-        subscriptions = Subscription.where(:item_id => @item.id)
-        subscriptions.each do |subscription|
-          #Call mailer here - subscription.email contains the email ID
+        @subscriptions = Subscription.where(:item_id => @item.id)
+        @subscriptions.each do |subscription|
+          SubscriberMailer.subscribe_email(subscription, @item).deliver_now
+          subscription.destroy
         end
       end
     end
