@@ -25,7 +25,11 @@ class OrdersController < ApplicationController
   end
 
   def review
-    @card = Card.new
+    if item_params.key?(:item_id) and age_restriction
+      redirect_to items_path, notice: "Item is age restricted"
+    else
+      @card = Card.new
+    end
   end
 
   def authenticate
@@ -199,6 +203,10 @@ class OrdersController < ApplicationController
       ids.append(orderitem.order_id)
     end
     @orders = Order.where(id:ids)
+  end
+  def age_restriction
+    item = Item.find(session[:item_id])
+    item.age_restricted_item and current_user.get_age < 18
   end
   def generate_otp
     rand.to_s[2..7]

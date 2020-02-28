@@ -1,5 +1,4 @@
 <h2>Admin Panel</h2>
-
 <ul class="list-group">
 <li class="list-group-item"><%= link_to 'All Users',  users_path%> </li>
 <li class="list-group-item"><%= link_to 'All Categories', categories_path %> </li>
@@ -7,6 +6,10 @@
 <li class="list-group-item"><%= link_to 'All Orders',  order_index_path%> </li>
 <li class="list-group-item"><%= link_to 'Approvals',  admin_approvals_path%> </li>
 <li class="list-group-item"><%= link_to 'Returns',  admin_returns_path%> </li>
-  <li class="list-group-item"><%= link_to 'Feedbacks',  feedbacks_path%> </li>
-
+<li class="list-group-item"><%= link_to 'Feedbacks',  feedbacks_path%> </li>
+</ul>
+<br>
+<ul class="list-group">
+  <li class="list-group-item"><%= link_to 'My Cart', cart_path %> </li>
+  <li class="list-group-item"><%= link_to 'View Saved Cards', cards_path %> </li>
 </ul>
