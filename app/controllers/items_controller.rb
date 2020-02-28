@@ -51,6 +51,7 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json
   def update
+    check_subscriptions
     respond_to do |format|
       if @item.update(item_params)
         format.html { redirect_to @item, notice: 'Item was successfully updated.' }
@@ -139,5 +140,17 @@ class ItemsController < ApplicationController
     Cart.where(item_id: id).destroy_all
     Subscription.where(item_id: id).destroy_all
     Wishlist.where(item_id: id).destroy_all
+  end
+  # Send Availability Emails
+  def check_subscriptions
+    if @item.quantity == 0
+      parameters = item_params
+      if parameters.has_key?(:quantity) and parameters[:quantity].to_i > 0
+        subscriptions = Subscription.where(:item_id => @item.id)
+        subscriptions.each do |subscription|
+          #Call mailer here - subscription.email contains the email ID
+        end
+      end
+    end
   end
 end
