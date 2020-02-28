@@ -1,4 +1,5 @@
 class CartsController < ApplicationController
+  before_action :check_logged_in
   before_action :set_cart_item, except: [:index, :clear]
   def index
     @cart_items = Cart.where(:user_id => current_user.id)
@@ -94,5 +95,10 @@ class CartsController < ApplicationController
   def age_restriction
     item = Item.find(cart_params[:item_id])
     item.age_restricted_item and current_user.get_age < 18
+  end
+  def check_logged_in
+    unless user_signed_in?
+      redirect_to root_path, notice: 'Please Sign In'
+    end
   end
 end

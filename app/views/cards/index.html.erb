@@ -13,7 +13,7 @@
         <th>Cvv</th>
         <th>Expiry mm</th>
         <th>Expiry yy</th>
-        <th></th>
+        <th>Action</th>
       </tr>
     </thead>
 
@@ -25,9 +25,9 @@
             <td><%= card.cvv %></td>
             <td><%= card.expiry_mm %></td>
             <td><%= card.expiry_yy %></td>
-            <td><%= link_to 'Show', card %></td>
-            <td><%= link_to 'Edit', edit_card_path(card) %></td>
-            <td><%= link_to 'Destroy', card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Show', card %> |
+            <%= link_to 'Edit', edit_card_path(card) %> |
+            <%= link_to 'Destroy', card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
     </tbody>

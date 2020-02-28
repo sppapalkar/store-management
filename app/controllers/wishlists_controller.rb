@@ -1,4 +1,5 @@
 class WishlistsController < ApplicationController
+  before_action :check_logged_in
   def index
     @wishlist = Wishlist.where(:user_id => current_user.id)
   end
@@ -29,5 +30,10 @@ class WishlistsController < ApplicationController
   private
   def wishlist_params
     params.permit(:id, :item_id)
+  end
+  def check_logged_in
+    unless user_signed_in?
+      redirect_to root_path, notice: 'Please Sign In'
+    end
   end
 end

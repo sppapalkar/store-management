@@ -1,2 +1,8 @@
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<% if notice or alert %>
+  <div class="alert alert-info" role="alert">
+    <%= notice %>
+    <%= alert %>
+  </div>
+<% else  %>
+  <p></p>
+<% end %>

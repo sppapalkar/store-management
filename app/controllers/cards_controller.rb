@@ -1,4 +1,5 @@
 class CardsController < ApplicationController
+  before_action :check_logged_in
   before_action :set_card, only: [:show, :edit, :update, :destroy]
 
   # GET /cards
@@ -71,5 +72,11 @@ class CardsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def card_params
       params.require(:card).permit(:name, :number, :cvv, :expiry_mm, :expiry_yy)
+    end
+
+    def check_logged_in
+      unless user_signed_in?
+        redirect_to root_path, notice: 'Please Sign In'
+      end
     end
 end

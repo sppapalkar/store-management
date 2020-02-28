@@ -1,5 +1,37 @@
+<h3>Trending Items</h3>
+<table style="width:100%" class = "table">
+  <thead>
+  <tr>
+    <th> </th>
+    <th>Category</th>
+    <th>Brand</th>
+    <th colspan>Name</th>
+    <th>Age Restricted</th>
+    <th>Restricted</th>
+    <th>Price</th>
+    <th colspan>Actions</th>
+  </tr>
+
+  </thead>
+
+  <tbody>
+  <% @popular_items.each do |item| %>
+    <tr>
+      <td><%= image_tag item.image_url(:thumb).to_s %></td>
+      <td><%= item.category.name %></td>
+      <td><%= item.brand %></td>
+      <td><%= item.name %></td>
+      <td><%= item.age_restricted_item %></td>
+      <td><%= item.restricted_item %></td>
+      <td><%= item.price %></td>
+      <td><%= link_to 'Show', item %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
 <h3>Recently Added</h3>
-<table style="width:100%">
+<table style="width:100%" class = "table">
   <thead>
   <tr>
     <th> </th>
@@ -30,36 +62,4 @@
   </tbody>
 </table>
 
-<br>
 
-<h3>Trending Items</h3>
-<table style="width:100%">
-  <thead>
-  <tr>
-    <th> </th>
-    <th>Category</th>
-    <th>Brand</th>
-    <th colspan>Name</th>
-    <th>Age Restricted</th>
-    <th>Restricted</th>
-    <th>Price</th>
-    <th colspan>Actions</th>
-  </tr>
-
-  </thead>
-
-  <tbody>
-  <% @popular_items.each do |item| %>
-    <tr>
-      <td><%= image_tag item.image_url(:thumb).to_s %></td>
-      <td><%= item.category.name %></td>
-      <td><%= item.brand %></td>
-      <td><%= item.name %></td>
-      <td><%= item.age_restricted_item %></td>
-      <td><%= item.restricted_item %></td>
-      <td><%= item.price %></td>
-      <td><%= link_to 'Show', item %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>

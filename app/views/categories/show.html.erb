@@ -4,6 +4,11 @@
   <strong>Name:</strong>
   <%= @category.name %>
 </p>
+<p>
+  <strong>Tax:</strong>
+  <%= @category.tax_slab %>
+</p>
+
 
 <%= link_to 'Edit', edit_category_path(@category) %> <br>
-<%= link_to 'Back', categories_path %>
+<%= link_to 'All Categories', categories_path %>

@@ -1,8 +1,7 @@
 class AdminController < ApplicationController
+  before_action :check_admin
   def index
-    unless user_signed_in? and current_user.admin
-      redirect_to root_path, notice: 'You dont have the rights to access the page'
-    end
+
   end
   def approvals
     @order_items = Orderitem.where(status: 'Pending Approval')
@@ -39,7 +38,14 @@ class AdminController < ApplicationController
     redirect_to order_manage_path(order), notice: 'Status Updated'
   end
   private
+  #Filter Params
   def orderitem_params
     params.permit(:order_id, :orderitem_id)
+  end
+  # Redirect to root if not admin
+  def check_admin
+    unless user_signed_in? and current_user.admin
+      redirect_to root_path, notice: 'You dont have the rights to access the page'
+    end
   end
 end

@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :check_logged_in
   before_action :set_session, only: [:review]
   before_action :get_cart_items, :check_cart, :check_cards, :compute_totals, except: [:manage, :index, :return]
 
@@ -213,5 +214,10 @@ class OrdersController < ApplicationController
   end
   def verify_otp
     session['otp'] == params[:otp][:code]
+  end
+  def check_logged_in
+    unless user_signed_in?
+      redirect_to root_path, notice: 'Please Sign In'
+    end
   end
 end

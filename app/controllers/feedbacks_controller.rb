@@ -1,5 +1,5 @@
 class FeedbacksController < ApplicationController
-  # before_action :check_admin, only:  %i[show edit destroy]
+  before_action :check_admin, only: [:index]
   before_action :set_feedback, only: [:show, :edit, :update, :destroy]
 
   # GET /feedbacks
@@ -71,5 +71,11 @@ class FeedbacksController < ApplicationController
     # Only allow a list of trusted parameters through.
     def feedback_params
       params.require(:feedback).permit(:email, :review)
+    end
+  # Only admin has the access
+    def check_admin
+      unless user_signed_in? and current_user.admin
+        redirect_to root_path, notice: 'You dont have the rights to access the page'
+      end
     end
 end
