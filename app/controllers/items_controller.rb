@@ -80,7 +80,6 @@ class ItemsController < ApplicationController
       redirect_to items_path, notice: 'Item already subscribed'
     else
       subscription.save
-      SubscriberMailer.subscribe_email(subscription).deliver_now
       redirect_to items_path, notice: 'Item subscribed for alerts'
     end
   end
@@ -140,4 +139,5 @@ class ItemsController < ApplicationController
     Subscription.where(item_id: id).destroy_all
     Wishlist.where(item_id: id).destroy_all
   end
+
 end
