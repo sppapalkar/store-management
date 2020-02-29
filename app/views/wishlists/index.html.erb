@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%#= notice %></p>-->
 <% if user_signed_in? %>
   <ul class="list-group list-group-horizontal">
   <li class="list-group-item"><%= link_to 'View Items', items_path %> </li>
@@ -15,12 +15,13 @@
 
 <h1>My Wishlist</h1>
 
-<table style="width:100%">
+<table style="width:100%" class = "table">
   <thead>
   <tr>
     <th>Item Brand</th>
     <th>Item Name</th>
     <th>Price</th>
+    <th>Action</th>
   </tr>
   </thead>
   <tbody>
@@ -30,12 +31,13 @@
       <td><%= item.brand %></td>
       <td><%= item.name %></td>
       <td><%= item.price %></td>
+      <td>
       <% if item.quantity > 0 %>
-        <td><%= link_to 'Add to Cart', cart_path(:item_id => item), method: :post %></td>
+        <%= link_to 'Add to Cart', cart_path(:item_id => item), method: :post %> |
       <% else  %>
-        <td>Item Unavailable - Subscribe</td>
+          <%= link_to 'Unavailable - Subscribe', item_subscribe_path(:item => {:id => item.id}), method: :post %> |
       <%end %>
-      <td><%= link_to 'Remove From Wishlist', wishlist_path(:id => wish_item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <%= link_to 'Remove From Wishlist', wishlist_path(:id => wish_item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
   </tbody>
