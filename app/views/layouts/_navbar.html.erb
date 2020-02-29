@@ -1,27 +1,54 @@
 <nav class="navbar navbar-light bg-info">
-    <div class="navbar-header">
+<div class="navbar-header">
         <a class="navbar-brand" href="/">Store Management System</a>
     </div>
+
+
+
+
+
+
+  
+    <% if user_signed_in? %>
+
+        <ul class="nav nav-pills nav-fills">
+            <li class="nav-item">
+                <%= link_to "Edit Profile".html_safe, edit_user_registration_path, class: "nav-link text-white bg-dark" %>
+
+            </li>
+            <li class="nav-item">
+                <%= link_to "Logout".html_safe, destroy_user_session_path, method: :delete, class: "nav-link text-white bg-dark"%>
+
+            </li>
+        </ul>
+    <% else %>
+    <nav>
+        <ul class="nav nav-pills nav-fills">
+            <li class="nav-item">
+                <%= link_to 'All Items', items_path, class: "nav-link text-white bg-dark" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to 'Feedback', new_feedback_path, class: "nav-link text-white bg-dark" %>
+            </li>
+        </ul>
+    </nav>
+
     <nav>
         <ul class="nav nav-pills nav-fills">
 
-            
-
-
-
-            <% if user_signed_in? %>
 
             <li class="nav-item">
-                <%= link_to "#{current_user.name}", edit_user_registration_path, class: "nav-link text-white bg-dark" %>
-                
+                <%= link_to 'Sign Up', new_user_registration_path, class: "nav-link text-white bg-dark" %> 
             </li>
             <li class="nav-item">
-                <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link text-white bg-dark"%>
-                
+                <%= link_to 'Sign In', new_user_session_path, class: "nav-link text-white bg-dark"  %> 
             </li>
-            <% end %>
+
+
+
 
         </ul>
 
     </nav>
-</nav>
+    <% end %>
+</nav> 
