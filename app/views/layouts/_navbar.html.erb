@@ -2,6 +2,59 @@
     <div class="navbar-header">
         <a class="navbar-brand" href="/">Store Management System</a>
     </div>
+
+  
+  
+  
+  
+  
+  
+  </ul>
+    <% if user_signed_in? %>
+        <nav>
+        <ul class="nav nav-pills nav-fills">
+            <li class="nav-item">
+                <%= link_to 'All Items', items_path, class: "nav-link text-white bg-dark" %> 
+            </li>
+            <li class="nav-item">
+                <%= link_to 'View Orders', order_index_path, class: "nav-link text-white bg-dark" %> 
+            </li>
+            <li class="nav-item">
+                <%= link_to 'View Wishlist', wishlist_path, class: "nav-link text-white bg-dark" %> 
+            </li>
+            <li class="nav-item">
+                <%= link_to 'My Cart', cart_path, class: "nav-link text-white bg-dark" %> 
+            </li>
+            <li class="nav-item">
+                <%= link_to 'View Saved Cards', cards_path, class: "nav-link text-white bg-dark" %> 
+            </li>
+            <li class="nav-item">
+                <%= link_to 'Give Feedback', new_feedback_path, class: "nav-link text-white bg-dark" %> 
+            </li>
+        </ul>
+    </nav>
+        <ul class="nav nav-pills nav-fills">
+            <li class="nav-item">
+                <%= link_to "Edit Profile".html_safe, edit_user_registration_path, class: "nav-link text-white bg-dark" %>
+                
+            </li>
+            <li class="nav-item">
+                <%= link_to "Logout".html_safe, destroy_user_session_path, method: :delete, class: "nav-link text-white bg-dark"%>
+                
+            </li>
+        </ul>
+    <% else %>
+    <nav>
+        <ul class="nav nav-pills nav-fills">
+            <li class="nav-item">
+                <%= link_to 'All Items', items_path, class: "nav-link text-white bg-dark" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to 'Feedback', new_feedback_path, class: "nav-link text-white bg-dark" %>
+            </li>
+        </ul>
+    </nav>
+    
     <nav>
         <ul class="nav nav-pills nav-fills">
 
@@ -9,19 +62,22 @@
 
 
 
-            <% if user_signed_in? %>
+
+            
 
             <li class="nav-item">
-                <%= link_to "#{current_user.name}", edit_user_registration_path, class: "nav-link text-white bg-dark" %>
-                
+                <%= link_to 'Sign Up', new_user_registration_path, class: "nav-link text-white bg-dark" %> 
             </li>
             <li class="nav-item">
-                <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link text-white bg-dark"%>
-                
+                <%= link_to 'Sign In', new_user_session_path, class: "nav-link text-white bg-dark"  %> 
             </li>
-            <% end %>
+
+            
+
+            
 
         </ul>
 
     </nav>
+    <% end %>
 </nav>
