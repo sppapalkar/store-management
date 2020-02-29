@@ -128,7 +128,7 @@ class ItemsController < ApplicationController
 
   def sort_items(key)
     if key == "P"
-      @items.sort_by(&:popularity)
+      @items = @items.sort_by(&:popularity).reverse
     elsif key == "C"
       @items = @items.sort_by(&:price)
     end
