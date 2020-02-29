@@ -138,6 +138,7 @@ class OrdersController < ApplicationController
     @cart_items.each do |cart_item|
       item = Item.find(cart_item.item_id)
       item.quantity -= cart_item.quantity
+      item.popularity += 0.5
       item.save
     end
   end
