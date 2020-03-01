@@ -1,5 +1,18 @@
 <p id="notice"><%= notice %></p>
+<% if user_signed_in? && current_user.admin%>
+  <ul class="list-group list-group-horizontal">
+    <li class="list-group-item"><%= link_to 'All Users', users_path %></li>
+    <li class="list-group-item"><%= link_to 'All Orders', order_index_path %> </li>
+    <li class="list-group-item"><%= link_to 'All Categories', categories_path %></li>
+    <li class="list-group-item"><%= link_to 'All Items', items_path %> </li>
+    <li class="list-group-item"><%= link_to 'Approvals', admin_approvals_path %> </li>
+    <li class="list-group-item"><%= link_to 'My Wishlist', wishlist_path %> </li>
+    <li class="list-group-item"><%= link_to 'My Cart', cart_path %> </li>
+    <li class="list-group-item"><%= link_to 'View Saved Cards', cards_path %> </li>
+    <li class="list-group-item"><%= link_to 'Feedback', feedbacks_path %> </li>
 
+  </ul>
+<%end %>
 <h1>Return Request Approvals</h1>
 
 <%= render 'table' %>

@@ -1,4 +1,28 @@
-
+<p id="notice"><%= notice %></p>
+<% if user_signed_in? %>
+  <% if current_user.admin %>
+    <ul class="list-group list-group-horizontal">
+      <li class="list-group-item"><%= link_to 'All Users', users_path %></li>
+      <li class="list-group-item"><%= link_to 'All Orders', order_index_path %> </li>
+      <li class="list-group-item"><%= link_to 'All Items', items_path %> </li>
+      <li class="list-group-item"><%= link_to 'Approvals', admin_approvals_path %> </li>
+      <li class="list-group-item"><%= link_to 'Returns', admin_returns_path %> </li>
+      <li class="list-group-item"><%= link_to 'View Wishlist', wishlist_path %> </li>
+      <li class="list-group-item"><%= link_to 'My Cart', cart_path %> </li>
+      <li class="list-group-item"><%= link_to 'View Saved Cards', cards_path %> </li>
+      <li class="list-group-item"><%= link_to 'Feedback', feedbacks_path %> </li>
+    </ul>
+  <%else %>
+    <ul class="list-group list-group-horizontal">
+      <li class="list-group-item"><%= link_to 'View Items', items_path %> </li>
+      <li class="list-group-item"><%= link_to 'View Orders', order_index_path %> </li>
+      <li class="list-group-item"><%= link_to 'View Wishlist', wishlist_path %> </li>
+      <li class="list-group-item"><%= link_to 'My Cart', cart_path %> </li>
+      <li class="list-group-item"><%= link_to 'View Saved Cards', cards_path %> </li>
+      <li class="list-group-item"><%= link_to 'Give Feedback', new_feedback_path %> </li>
+    </ul>
+  <%end %>
+<% end %>
 <h1>Categories</h1>
 
 <table style="width:100%" class="table">
