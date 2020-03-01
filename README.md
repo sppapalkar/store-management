@@ -26,6 +26,14 @@ In tables, you can find Action Buttons in the right most columns of each row.
 
 You can find important navigation links in the bottom left corner of each page.
 
+## Under Age User (< 18)
+   - Email - sid18996@gmail.com
+   - Password - password
+   
+## Senior User (> 65)
+   - Email - sid.s.despande@gmail.com
+   - Password - password
+   
 ### Admin
 
    - Email - ssdeshp6@ncsu.edu
