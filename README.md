@@ -1,7 +1,7 @@
 # CSC 517 - Project 2
 ## ***Store Management***
 
-Link to [Deployment](https://ncsu-library-management.herokuapp.com/)  
+Link to [Deployment](http://152.7.99.37:8080)  
 Link to [Github Project](https://github.ncsu.edu/shmehta/store-management)
 
 ## Home Page
@@ -28,8 +28,8 @@ You can find important navigation links in the bottom left corner of each page.
 
 ### Admin
 
-   - Email - [enter admin id]
-   - Password - [enter admin password]  
+   - Email - ssdeshp6@ncsu.edu
+   - Password - password
 
 #### Login and Dashboard
 
@@ -99,8 +99,8 @@ User can subscribe to unavailable items and get an email update when item is ava
 > Sahil Mehta(shmehta)  
 > Siddharth Deshpande(ssdeshp6)  
 
-Ruby version - [enter the ruby version]  
-Rails version - [enter the rails version]
+Ruby version - 2.7.0p0 
+Rails version - 6.0.2.1
 
 
 
