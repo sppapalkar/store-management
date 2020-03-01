@@ -12,6 +12,7 @@ end
 
 group :production do
   gem 'pg', '~> 0.21.0'
+  gem 'rails_12factor'
 end
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
