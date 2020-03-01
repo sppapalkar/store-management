@@ -82,7 +82,7 @@ To view all the Approval requests, visit the Approvals link on dashboard. This i
 On the home page, you can view Items Up as a visitor. To buy anything, you will have to sign up or sign in.
 
 
-#### Student -> Dashboard
+#### User -> Dashboard
 
 A user can Sign Up/Sign In into the system on the home page. 
 
@@ -96,7 +96,9 @@ User can view all their past order using the View Order link.
 
 User can view their cart at any time by clicking on the My Cart link.
 
-On View Orders page, user can also place return requests for items.  
+On View Orders page, user can also place return requests for items. 
+
+Status of each item can be viewed on Order review page.
 
 User can also give feedback for the site.
 
