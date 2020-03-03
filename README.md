@@ -27,7 +27,7 @@ In tables, you can find Action Buttons in the right most columns of each row.
 You can find important navigation links in the bottom left corner of each page.
 
 ## Under Age User (< 18)
-   - Email - sid18996@gmail.com
+   - Email - sid18995@gmail.com
    - Password - password
    
 ## Senior User (> 65)
